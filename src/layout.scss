@@ -1,0 +1,17 @@
+@import "normalize.css";
+
+$col-num: 24;
+
+.row {
+	display: flex;
+}
+
+@for $i from 1 through $col-num {
+	.col-#{$i} {
+		flex: 0 0 $i / $col-num * 100%;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+
+}
