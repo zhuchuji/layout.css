@@ -1,17 +1,47 @@
-@import "normalize.css";
+/*
+ * @author Chockie Zhu
+ * @desc Grid system
+ *
+ */
 
 $col-num: 24;
+
+$desktop-xl: "screen and (min-width: 1900px)";
+$desktop-lg: "screen and (min-width: 1200px)";
+$desktop-md: "screen and (min-width: 992px)";
+$tablet: "screen and (min-width: 768px)";
+$smartphone: "screen and (max-width: 768px)";
+$xl: (label: "xl", media: $desktop-xl);
+$lg: (label: "lg", media: $desktop-lg);
+$md: (label: "md", media: $desktop-md);
+$sm: (label: "sm", media: $tablet);
+$xs: (label: "xs", media: $smartphone);
 
 .row {
 	display: flex;
 }
 
-@for $i from 1 through $col-num {
+@for $i from 1 to $col-num {
 	.col-#{$i} {
-		flex: 0 0 $i / $col-num * 100%;
+		flex: 0 1 $i / $col-num * 100%;
+	}
+	.col-offset-#{$i} {
+		margin-left: $i / $col-num * 100%;
 	}
 }
 
-@media screen and (min-width: 1200px) {
+@each $device in $xl, $lg, $md, $sm, $xs {
+	$label: map-get($device, label);
+	$media: map-get($device, media);
 
+	@media #{$media} {
+		@for $i from 1 to $col-num {
+			.col-#{$label}-#{$i} {
+				flex: 0 1 $i / $col-num * 100%;
+			}
+			.col-#{$label}-offset-#{$i} {
+				margin-left: $i / $col-num * 100%;
+			}
+		}
+	}
 }

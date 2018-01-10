@@ -3,6 +3,7 @@ let sass = require('gulp-sass')
 let postcss = require('gulp-postcss')
 let sourcemaps = require('gulp-sourcemaps')
 let autoprefixer = require('autoprefixer')
+let server = require('gulp-webserver')
 
 gulp.task('sass', function () {
 	return gulp.src('./src/**/*.scss')
@@ -14,3 +15,12 @@ gulp.task('sass', function () {
 })
 
 gulp.task('build', ['sass'])
+
+// serve the examples
+gulp.task('serve', function () {
+	gulp.src(['./examples', './dist'])
+		.pipe(server({
+			livereload: true,
+			port: 8080
+		}))
+})
