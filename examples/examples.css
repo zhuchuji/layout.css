@@ -1,4 +1,17 @@
+.basic-row {
+  margin-bottom: 20px;
+  line-height: 30px;
+  text-align: center;
+}
+
 .basic-row > div {
 	height: 30px;
-	background-color: blue;
+}
+
+.block--blue {
+  background-color: blue;
+}
+
+.block--red {
+  background-color: red;
 }

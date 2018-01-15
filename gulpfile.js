@@ -15,6 +15,9 @@ gulp.task('sass', function () {
 })
 
 gulp.task('build', ['sass'])
+gulp.task('watch', function () {
+	gulp.watch(['./src/**/*.scss'], ['sass'])
+})
 
 // serve the examples
 gulp.task('serve', function () {

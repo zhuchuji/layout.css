@@ -1,27 +1,29 @@
 /*
  * @author Chockie Zhu
- * @desc Grid system
+ * @desc responsive layout system
  *
  */
 
 $col-num: 24;
 
-$desktop-xl: "screen and (min-width: 1900px)";
-$desktop-lg: "screen and (min-width: 1200px)";
-$desktop-md: "screen and (min-width: 992px)";
-$tablet: "screen and (min-width: 768px)";
-$smartphone: "screen and (max-width: 768px)";
-$xl: (label: "xl", media: $desktop-xl);
-$lg: (label: "lg", media: $desktop-lg);
-$md: (label: "md", media: $desktop-md);
-$sm: (label: "sm", media: $tablet);
-$xs: (label: "xs", media: $smartphone);
+$screen-only: only screen;
+$desktop-xl: 1900px;
+$desktop-lg: 1200px;
+$desktop-md: 992px;
+$tablet: 768px;
+$smartphone: $tablet - 1px;
+
+$xl: (label: "xl", media: "#{$screen-only} and (min-width: $desktop-xl)");
+$lg: (label: "lg", media: "#{$screen-only} and (min-width: $desktop-lg)");
+$md: (label: "md", media: "#{$screen-only} and (min-width: $desktop-md)");
+$sm: (label: "sm", media: "#{$screen-only} and (min-width: $tablet)");
+$xs: (label: "xs", media: "#{$screen-only} and (max-width: $smartphone)");
 
 .row {
 	display: flex;
 }
 
-@for $i from 1 to $col-num {
+@for $i from 1 through $col-num {
 	.col-#{$i} {
 		flex: 0 1 $i / $col-num * 100%;
 	}
@@ -30,12 +32,12 @@ $xs: (label: "xs", media: $smartphone);
 	}
 }
 
-@each $device in $xl, $lg, $md, $sm, $xs {
+@each $device in $xs, $sm, $md, $lg, $xl {
 	$label: map-get($device, label);
 	$media: map-get($device, media);
 
 	@media #{$media} {
-		@for $i from 1 to $col-num {
+		@for $i from 1 through $col-num {
 			.col-#{$label}-#{$i} {
 				flex: 0 1 $i / $col-num * 100%;
 			}
@@ -43,5 +45,66 @@ $xs: (label: "xs", media: $smartphone);
 				margin-left: $i / $col-num * 100%;
 			}
 		}
+	}
+}
+
+// util class for hiding
+.hidden-xl-only {
+	@media #{$screen-only} and (min-width: $desktop-xl) {
+		display: none !important;
+	}
+}
+
+.hidden-lg-only {
+	@media #{$screen-only} and (min-width: $desktop-lg) and (max-width: $desktop-xl - 1px) {
+		display: none !important;
+	}
+}
+.hidden-lg-and-down {
+	@media #{$screen-only} and (max-width: $desktop-xl - 1px) {
+		display: none !important;
+	}
+}
+.hidden-lg-and-up {
+	@media screen and (min-width: $desktop-lg) {
+		display: none !important;
+	}
+}
+
+.hidden-md-only {
+	@media #{$screen-only} and (min-width: $desktop-md) and (max-width: $desktop-lg - 1px) {
+		display: none !important;
+	}
+}
+.hidden-md-and-down {
+	@media #{$screen-only} and (max-width: $desktop-lg - 1px) {
+		display: none !important;
+	}
+}
+.hidden-md-and-up {
+	@media #{$screen-only} and (min-width: $desktop-md) {
+		display: none !important;
+	}
+}
+
+.hidden-sm-only {
+	@media #{$screen-only} and (min-width: $tablet) and (max-width: $desktop-md - 1px) {
+		display: none !important;
+	}
+}
+.hidden-sm-and-down {
+	@media #{$screen-only} and (max-width: $desktop-md - 1px) {
+		display: none !important;
+	}
+}
+.hidden-sm-and-up {
+	@media #{$screen-only} and (min-width: $tablet) {
+		display: none !important;
+	}
+}
+
+.hidden-xs-only {
+	@media #{$screen-only} and (max-width: $smartphone) {
+		display: none !important;
 	}
 }

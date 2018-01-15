@@ -2,16 +2,42 @@
 <html>
 	<head>
 		<title>CSS Responsive Layout Framework</title>
+		<meta name="viewport" content="width=device-width"/>
 		<link rel="stylesheet" href="./normalize.css"/>
 		<link rel="stylesheet" href="./layout.css"/>
 		<link rel="stylesheet" href="./examples.css"></head>
 		<script src="./examples.js"></script>
 	</head>
 	<body>
+		<p>Basic grid system. A row is seperated into 24 columns</p>
 		<div class="row basic-row">
-			<div class="col-12">
+			<div class="col-12 block--blue">
+				col-12
 			</div>
-			<div class="col-12">
+			<div class="col-12 block--red">
+				col-12
+			</div>
+		</div>
+		<div class="row basic-row">
+			<div class="col-8 block--blue">
+				col-8
+			</div>
+			<div class="col-8 block--red">
+				col-8
+			</div>
+			<div class="col-8 block--blue">
+				col-8
+			</div>
+		</div>
+		<div class="row basic-row">
+			<div class="col-12 col-offset-6 block--blue">
+				col-12 col-offset-6
+			</div>
+		</div>
+		<p>Responsive layout</p>
+		<div class="row basic-row">
+			<div class="col-md-4 col-lg-12 block--blue">
+				col-
 			</div>
 		</div>
 	</body>
