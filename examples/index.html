@@ -9,6 +9,7 @@
 		<script src="./examples.js"></script>
 	</head>
 	<body>
+		<h3 class="title">CSS Responsive Layout Framework</h3>
 		<p>Basic grid system. A row is seperated into 24 columns</p>
 		<div class="row basic-row">
 			<div class="col-12 block--blue">
@@ -34,11 +35,37 @@
 				col-12 col-offset-6
 			</div>
 		</div>
-		<p>Responsive layout</p>
+		<p>Responsive layout. Media queries are:</p>
+		<ul>
+			<li>xs -- max-width: 767px</li>
+			<li>sm -- min-width: 768px</li>
+			<li>md -- min-width: 992px</li>
+			<li>lg -- min-width: 1200px</li>
+			<li>xl -- min-width: 1900px</li>
+		</ul>
 		<div class="row basic-row">
-			<div class="col-md-4 col-lg-12 block--blue">
-				col-
+			<div class="col-xs-24 col-sm-20 col-md-16 col-lg-12 block--blue">
+				col-xs-24 col-sm-20 col-md-16 col-lg-12
 			</div>
 		</div>
+		<div class="row basic-row">
+			<div class="col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12 block--blue">
+				col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12
+			</div>
+		</div>
+		<p>Hidden classes</p>
+		<ul>
+			<li>.hidden-xs-only</li>
+			<li>.hidden-sm-only</li>
+			<li>.hidden-sm-and-down</li>
+			<li>.hidden-sm-and-up</li>
+			<li>.hidden-md-only</li>
+			<li>.hidden-md-and-down</li>
+			<li>.hidden-md-and-up</li>
+			<li>.hidden-lg-only</li>
+			<li>.hidden-lg-and-down</li>
+			<li>.hidden-lg-and-up</li>
+			<li>.hidden-xl-only</li>
+		</ul>
 	</body>
 </html>

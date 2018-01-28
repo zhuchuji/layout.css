@@ -19,8 +19,18 @@ gulp.task('watch', function () {
 	gulp.watch(['./src/**/*.scss'], ['sass'])
 })
 
+gulp.task('example-sass', function () {
+	return gulp.src(['./examples/**/*.scss'])
+		.pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
+		.pipe(postcss([autoprefixer]))
+		.pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest('./examples'))
+})
+
 // serve the examples
 gulp.task('serve', function () {
+	gulp.watch(['./examples/**/*.scss'], ['example-sass'])
 	gulp.src(['./examples', './dist'])
 		.pipe(server({
 			livereload: true,

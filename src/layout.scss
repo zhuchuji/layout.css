@@ -6,19 +6,6 @@
 
 $col-num: 24;
 
-$sm: 768px;
-$md: 992px;
-$lg: 1200px;
-$xl: 1900px;
-
-$grid-specs: (
-	"xs": "(max-width: $sm - 1px)",
-	"sm": "(min-width: $sm)",
-	"md": "(min-width: $md)",
-	"lg": "(min-width: $lg)",
-	"xl": "(min-width: $xl)"
-);
-
 .row {
 	display: flex;
 }
@@ -59,6 +46,31 @@ $grid-specs: (
 	align-items: flex-end;
 }
 
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1900px;
+
+.col-0 {
+	display: none;
+}
+@for $i from 1 through $col-num {
+	.col-#{$i} {
+		flex: 0 1 $i / $col-num * 100%;
+	}
+	.col-offset-#{$i} {
+		margin-left: $i / $col-num * 100%;
+	}
+}
+
+$grid-specs: (
+	"xs": "(max-width: $sm - 1px)",
+	"sm": "(min-width: $sm)",
+	"md": "(min-width: $md)",
+	"lg": "(min-width: $lg)",
+	"xl": "(min-width: $xl)"
+);
+
 @each $label, $media in $grid-specs {
 	@media #{$media} {
 		.col-#{$label}-0 {
@@ -66,7 +78,7 @@ $grid-specs: (
 		}
 		@for $i from 1 through $col-num {
 			.col-#{$label}-#{$i} {
-				flex: 0, 1 $i / $col-num * 100%;
+				flex: 0 1 $i / $col-num * 100%;
 			}
 			.col-#{$label}-offset-#{$i} {
 				margin-left: $i / $col-num * 100%;
@@ -75,11 +87,10 @@ $grid-specs: (
 	}
 }
 
-
 $hidden-specs: (
 	"xs-only": "(max-width: $sm - 1px)",
 	"sm-only": "(min-width: $sm) and (max-width: $md - 1px)",
-	"sm-and-down": "max-width: $md - 1px)",
+	"sm-and-down": "(max-width: $md - 1px)",
 	"sm-and-up": "(min-width: $sm)",
 	"md-only": "(min-width: $md) and (max-width: $lg - 1px)",
 	"md-and-down": "(max-width: $lg - 1px)",
