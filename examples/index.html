@@ -3,69 +3,92 @@
 	<head>
 		<title>CSS Responsive Layout Framework</title>
 		<meta name="viewport" content="width=device-width"/>
-		<link rel="stylesheet" href="./normalize.css"/>
-		<link rel="stylesheet" href="./layout.css"/>
-		<link rel="stylesheet" href="./examples.css"></head>
-		<script src="./examples.js"></script>
+		<link rel="stylesheet" href="styles/normalize.css"/>
+		<link rel="stylesheet" href="styles/examples.css"/>
 	</head>
 	<body>
-		<h3 class="title">CSS Responsive Layout Framework</h3>
-		<p>Basic grid system. A row is seperated into 24 columns</p>
-		<div class="row basic-row">
-			<div class="col-12 block--blue">
-				col-12
+		<header class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-4">
+						Layout CSS
+					</div>
+					<div class="col-20">
+						<div class="row row--justify-end">
+							<ul class="menu">
+								<li class="menu-item"><a class="menu-item__link">Guide</a></li>
+								<li class="menu-item"><a class="menu-item__link">Version: 1.0.0</a></li>
+								<li class="menu-item"><a class="menu-item__link">Language: English</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-12 block--red">
-				col-12
+		</header>
+		<main class="main">
+			<div class="container">
+				<div class="row">
+					<h3 class="title">CSS Responsive Layout Framework</h3>
+				</div>
+				<p>Basic grid system. A row is seperated into 24 columns</p>
+				<div class="row basic-row">
+					<div class="col-12 block--blue">
+						col-12
+					</div>
+					<div class="col-12 block--red">
+						col-12
+					</div>
+				</div>
+				<div class="row basic-row">
+					<div class="col-8 block--blue">
+						col-8
+					</div>
+					<div class="col-8 block--red">
+						col-8
+					</div>
+					<div class="col-8 block--blue">
+						col-8
+					</div>
+				</div>
+				<div class="row basic-row">
+					<div class="col-12 col-offset-6 block--blue">
+						col-12 col-offset-6
+					</div>
+				</div>
+				<p>Responsive layout. Media queries are:</p>
+				<ul>
+					<li>xs -- max-width: 767px</li>
+					<li>sm -- min-width: 768px</li>
+					<li>md -- min-width: 992px</li>
+					<li>lg -- min-width: 1200px</li>
+					<li>xl -- min-width: 1900px</li>
+				</ul>
+				<div class="row basic-row">
+					<div class="col-xs-24 col-sm-20 col-md-16 col-lg-12 block--blue">
+						col-xs-24 col-sm-20 col-md-16 col-lg-12
+					</div>
+				</div>
+				<div class="row basic-row">
+					<div class="col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12 block--blue">
+						col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12
+					</div>
+				</div>
+				<p>Hidden classes</p>
+				<ul>
+					<li>.hidden-xs-only</li>
+					<li>.hidden-sm-only</li>
+					<li>.hidden-sm-and-down</li>
+					<li>.hidden-sm-and-up</li>
+					<li>.hidden-md-only</li>
+					<li>.hidden-md-and-down</li>
+					<li>.hidden-md-and-up</li>
+					<li>.hidden-lg-only</li>
+					<li>.hidden-lg-and-down</li>
+					<li>.hidden-lg-and-up</li>
+					<li>.hidden-xl-only</li>
+				</ul>
 			</div>
-		</div>
-		<div class="row basic-row">
-			<div class="col-8 block--blue">
-				col-8
-			</div>
-			<div class="col-8 block--red">
-				col-8
-			</div>
-			<div class="col-8 block--blue">
-				col-8
-			</div>
-		</div>
-		<div class="row basic-row">
-			<div class="col-12 col-offset-6 block--blue">
-				col-12 col-offset-6
-			</div>
-		</div>
-		<p>Responsive layout. Media queries are:</p>
-		<ul>
-			<li>xs -- max-width: 767px</li>
-			<li>sm -- min-width: 768px</li>
-			<li>md -- min-width: 992px</li>
-			<li>lg -- min-width: 1200px</li>
-			<li>xl -- min-width: 1900px</li>
-		</ul>
-		<div class="row basic-row">
-			<div class="col-xs-24 col-sm-20 col-md-16 col-lg-12 block--blue">
-				col-xs-24 col-sm-20 col-md-16 col-lg-12
-			</div>
-		</div>
-		<div class="row basic-row">
-			<div class="col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12 block--blue">
-				col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12
-			</div>
-		</div>
-		<p>Hidden classes</p>
-		<ul>
-			<li>.hidden-xs-only</li>
-			<li>.hidden-sm-only</li>
-			<li>.hidden-sm-and-down</li>
-			<li>.hidden-sm-and-up</li>
-			<li>.hidden-md-only</li>
-			<li>.hidden-md-and-down</li>
-			<li>.hidden-md-and-up</li>
-			<li>.hidden-lg-only</li>
-			<li>.hidden-lg-and-down</li>
-			<li>.hidden-lg-and-up</li>
-			<li>.hidden-xl-only</li>
-		</ul>
+		</main>
+		<script data-main="scripts/examples.js" src="scripts/require.js"></script>
 	</body>
 </html>

@@ -5,6 +5,7 @@ let sourcemaps = require('gulp-sourcemaps')
 let autoprefixer = require('autoprefixer')
 let server = require('gulp-webserver')
 
+// build sass files under src
 gulp.task('sass', function () {
 	return gulp.src('./src/**/*.scss')
 		.pipe(sourcemaps.init())
@@ -15,10 +16,8 @@ gulp.task('sass', function () {
 })
 
 gulp.task('build', ['sass'])
-gulp.task('watch', function () {
-	gulp.watch(['./src/**/*.scss'], ['sass'])
-})
 
+// build sass files under example
 gulp.task('example-sass', function () {
 	return gulp.src(['./examples/**/*.scss'])
 		.pipe(sourcemaps.init())
@@ -29,9 +28,10 @@ gulp.task('example-sass', function () {
 })
 
 // serve the examples
-gulp.task('serve', function () {
+gulp.task('serve', ['sass', 'example-sass'], function () {
 	gulp.watch(['./examples/**/*.scss'], ['example-sass'])
-	gulp.src(['./examples', './dist'])
+	gulp.watch(['./src/**/*.scss'], ['sass'])
+	gulp.src(['./examples', './src'])
 		.pipe(server({
 			livereload: true,
 			port: 8080
