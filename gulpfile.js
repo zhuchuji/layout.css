@@ -17,21 +17,21 @@ gulp.task('sass', function () {
 
 gulp.task('build', ['sass'])
 
-// build sass files under example
-gulp.task('example-sass', function () {
-	return gulp.src(['./examples/**/*.scss'])
+// build sass files under doc
+gulp.task('doc-sass', function () {
+	return gulp.src(['./docs/**/*.scss'])
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([autoprefixer]))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('./examples'))
+		.pipe(gulp.dest('./docs'))
 })
 
-// serve the examples
-gulp.task('serve', ['sass', 'example-sass'], function () {
-	gulp.watch(['./examples/**/*.scss'], ['example-sass'])
+// serve the docs
+gulp.task('serve', ['sass', 'doc-sass'], function () {
+	gulp.watch(['./docs/**/*.scss'], ['doc-sass'])
 	gulp.watch(['./src/**/*.scss'], ['sass'])
-	gulp.src(['./examples', './src'])
+	gulp.src(['./docs', './src'])
 		.pipe(server({
 			livereload: true,
 			port: 8080
