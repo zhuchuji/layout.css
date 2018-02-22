@@ -18,11 +18,8 @@ define(function () {
       }
     },
     removeClass: function (dom, className) {
-      while (this.hasClass(dom, className)) {
-        var classStartIndex = dom.className.indexOf(className)
-        var classEndIndex = classStartIndex + className.length + 1
-        dom.className = dom.className.slice(0, classStartIndex + 1) + dom.className.slice(classEndIndex)
-      }
+      var classReg = new RegExp('(^|\\s)' + className + '((?=\\s)|$)')
+      dom.className = dom.className.replace(classReg, '')
     },
     // @Todo check className just for one time
     toggleClass: function (dom, className) {
