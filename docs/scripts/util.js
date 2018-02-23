@@ -18,10 +18,9 @@ define(function () {
       }
     },
     removeClass: function (dom, className) {
-      var classReg = new RegExp('(^|\\s)' + className + '((?=\\s)|$)')
-      dom.className = dom.className.replace(classReg, '')
+      var classReg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+      dom.className = dom.className.replace(classReg, ' ')
     },
-    // @Todo check className just for one time
     toggleClass: function (dom, className) {
       if (this.hasClass(dom, className)) {
         this.removeClass(dom, className)
@@ -30,7 +29,7 @@ define(function () {
       }
     },
     hasClass: function (dom, className) {
-      var classReg = new RegExp('(^|\\s)' + className + '((?=\\s)|$)')
+      var classReg = new RegExp('(^|\\s)' + className + '(\\s|$)')
       return dom.className.search(classReg) !== -1
     }
   }

@@ -83,6 +83,14 @@ $grid-specs: (
 			.col-#{$label}-offset-#{$i} {
 				margin-left: $i / $col-num * 100%;
 			}
+			.col-#{$label}-push-#{$i} {
+				position: relative;
+				left: $i / $col-num * 100%;
+			}
+			.col-#{$label}-pull-#{$i} {
+				position: relative;
+				right: $i / $col-num * 100%;
+			}
 		}
 	}
 }
