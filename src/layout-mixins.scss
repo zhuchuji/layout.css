@@ -1,0 +1,23 @@
+/*
+ * @file layout-mixins.scss
+ * @desc sass mixins for layout
+ */
+
+@import "./layout-vars.scss";
+
+
+@mixin response ($media) {
+  @if map-has-key($grid-specs, $media) {
+    @media #{map-get($grid-specs, $media)} {
+      @content;
+    }
+  }
+}
+
+@mixin make-container () {
+  @each $media-label, $container-width in $container-specs {
+    @include response($media-label) {
+      width: $container-width;
+    }
+  }
+}

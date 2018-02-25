@@ -1,12 +1,14 @@
 @import '../../src/layout.scss';
 
 // colors
-$color1: #e1e6f9;
-$color2: #e8f1f0;
+$color-blue: #e1e6f9;
+$color-green: #e8f1f0;
 $color3: #f7e1f5;
 
 // dimension
 $header-height: 60px;
+$header-text-color: #cbbde2;
+$header-text-active-color: #fff;
 $footer-height: 50px;
 
 html {
@@ -14,27 +16,28 @@ html {
   font-size: 14px;
 }
 
-.container {
-  box-sizing: border-box;
-  margin: auto;
-  width: 1200px;
+a {
+  text-decoration: none;
 }
 
 .header {
   position: fixed;
+  z-index: 2000;
   top: 0;
-  border-bottom: 1px solid #d1d5da;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.075);
-  background-color: #fff;
+  background-color: #563d7c;
   width: 100%;
   line-height: $header-height;
+  color: $header-text-color;
+}
+
+.header__text {
+  color: $header-text-color;
 }
 
 .menu {
   margin: 0;
   padding-left: 0;
   list-style: none;
-  color: #888;
 }
 
 .menu-item {
@@ -46,23 +49,18 @@ html {
   padding: 0 20px;
 
   &:hover {
-    color: #333;
+    color: $header-text-active-color;
     cursor: pointer;
   }
 
   &--active {
-    color: #333;
+    color: $header-text-active-color;
   }
 }
 
 .main {
   margin-top: $header-height;
   margin-bottom: $footer-height;
-}
-
-.title {
-  width: 100%;
-  text-align: center;
 }
 
 .part {
@@ -80,27 +78,23 @@ html {
   text-align: center;
 }
 
-.basic-row > div {
-	height: 30px;
-}
-
 .block--blue {
-  background-color: $color1;
+  background-color: $color-blue;
 }
 
 .block--green {
-  background-color: $color2;
+  background-color: $color-green;
 }
 
-.block--margin {
-  margin: 0 5%;
+.block--padding {
+  padding: 0 5%;
 }
 
 .block--first {
-  margin-left: 0;
+  padding-left: 0;
 }
 
 .block--last {
-  margin-right: 0;
+  padding-right: 0;
 }
 

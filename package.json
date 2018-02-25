@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp build-src-sass",
     "serve": "gulp serve"
   },
   "keywords": [],

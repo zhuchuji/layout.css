@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>CSS Responsive Layout Framework</title>
-		<meta name="viewport" content="width=device-width"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="styles/normalize.css"/>
 		<link rel="stylesheet" href="styles/examples.css"/>
 	</head>
@@ -10,15 +10,15 @@
 		<header class="header">
 			<div class="container">
 				<div class="row">
-					<div class="col-4">
-						Layout CSS
+					<div class="col-md-4">
+						<a class="header__text" href="/">Layout CSS</a>
 					</div>
-					<div class="col-20">
+					<div class="col-md-20">
 						<div class="row row--justify-end">
 							<ul class="menu">
-								<li class="menu-item"><a class="menu-item__link">Guide</a></li>
-								<li class="menu-item"><a class="menu-item__link">Version: 1.0.0</a></li>
-								<li class="menu-item"><a class="menu-item__link">Language: English</a></li>
+								<li class="menu-item"><a class="menu-item__link header__text">Guide</a></li>
+								<li class="menu-item"><a class="menu-item__link header__text">Version: 1.0.0</a></li>
+								<li class="menu-item"><a class="menu-item__link header__text">Language: English</a></li>
 							</ul>
 						</div>
 					</div>
@@ -28,34 +28,42 @@
 		<main class="main">
 			<div class="container">
 				<div class="row">
-					<h2 class="title">CSS Responsive Layout Framework</h2>
+					<h2>Grid system</h2>
 				</div>
 				<div class="part">
 					<h3>Features</h3>
-					<div class="part__item">
-						<p>Basic grid system. A row is seperated into 24 columns</p>
+					<div class="	">
+						<p>The grid system is a mobile-first flexbox grid for layout. "row" and "col" are basic components, where there are 24 columns in a row. The grid system could help you implement various layouts.</p>
 						<div class="row basic-row">
-							<div class="col-12 block--blue">
-								col-12
+							<div class="col-12">
+								<div class="block--blue">col-12</div>
 							</div>
-							<div class="col-12 block--green">
-								col-12
+							<div class="col-12">
+								<div class="block--green">col-12</div>
 							</div>
 						</div>
 						<div class="row basic-row">
-							<div class="col-8 block--blue">
-								col-8
+							<div class="col-8">
+								<div class="block--blue">col-8</div>
 							</div>
-							<div class="col-8 block--green">
-								col-8
+							<div class="col-8">
+								<div class="block--green">col-8</div>
 							</div>
-							<div class="col-8 block--blue">
-								col-8
+							<div class="col-8">
+								<div class="block--blue">col-8</div>
 							</div>
 						</div>
 						<div class="row basic-row">
-							<div class="col-12 col-offset-6 block--blue">
-								col-12 col-offset-6
+							<div class="col-12 col-offset-6">
+								<div class="block--blue">col-12 col-offset-6</div>
+							</div>
+						</div>
+						<div class="row basic-row">
+							<div class="col-8 col-push-8">
+								<div class="block--blue">col-8 col-push-8</div>
+							</div>
+							<div class="col-8 col-pull-8">
+								<div class="block--green">col-8 col-pull-8</div>
 							</div>
 						</div>
 					</div>
@@ -80,15 +88,15 @@
 						</div>
 					</div>
 					<div class="part__item">
-						<p>If you need margin between columns, just set margin for yourself</p>
+						<p>If you need margin between columns, you could set padding in columns</p>
 						<div class="row basic-row">
-							<div class="col-8 block--blue block--margin block--first">
+							<div class="col-8 block--blue block--padding block--first">
 								col-8 gutter:10%
 							</div>
-							<div class="col-8 block--blue block--margin">
+							<div class="col-8 block--blue block--padding">
 								col-8 gutter: 10%
 							</div>
-							<div class="col-8 block--blue block--margin block--last">
+							<div class="col-8 block--blue block--padding block--last">
 								col-8 gutter: 10%
 							</div>
 						</div>

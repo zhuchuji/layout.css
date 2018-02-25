@@ -5,32 +5,52 @@ let sourcemaps = require('gulp-sourcemaps')
 let autoprefixer = require('autoprefixer')
 let server = require('gulp-webserver')
 
-// build sass files under src
-gulp.task('sass', function () {
-	return gulp.src('./src/**/*.scss')
+let srcSassFiles = ['./src/layout.scss']
+let docsSassFiles = ['./docs/styles/examples.scss']
+
+function compileSass (files) {
+	return gulp.src(files)
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([autoprefixer]))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('./dist'))
+}
+
+function compileSrcSass () {
+	return compileSass(srcSassFiles)
+}
+
+function buildSrcSass () {
+	return compileSrcSass().pipe(gulp.dest('./dist'))
+}
+
+function compileDocsSass () {
+	return compileSass(docsSassFiles)
+}
+
+function buildDocsSass () {
+	return compileDocsSass().pipe(gulp.dest('./docs/styles/'))
+}
+
+gulp.task('compile-src-sass', function () {
+	return compileSrcSass()
 })
 
-gulp.task('build', ['sass'])
+gulp.task('build-src-sass', function () {
+	return buildSrcSass()
+})
 
-// build sass files under doc
-gulp.task('doc-sass', function () {
-	return gulp.src(['./docs/**/*.scss'])
-		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(postcss([autoprefixer]))
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('./docs'))
+gulp.task('compile-docs-sass', function () {
+	return compileDocsSass()
+})
+
+gulp.task('build-docs-sass', function () {
+	return buildDocsSass()
 })
 
 // serve the docs
-gulp.task('serve', ['sass', 'doc-sass'], function () {
-	gulp.watch(['./docs/**/*.scss'], ['doc-sass'])
-	gulp.watch(['./src/**/*.scss'], ['sass'])
+gulp.task('serve', ['build-docs-sass'], function () {
+	gulp.watch(['./docs/**/*.scss', './src/**/*.scss'], ['build-docs-sass'])
 	gulp.src(['./docs', './src'])
 		.pipe(server({
 			livereload: true,

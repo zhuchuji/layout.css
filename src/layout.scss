@@ -1,21 +1,24 @@
 /*
  * @author Chockie Zhu
  * @desc responsive layout system
- *
  */
 
-$col-num: 24;
+@import "./layout-vars.scss";
+@import "./layout-mixins.scss";
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	@include make-container();
+}
 
 .row {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .row--vertical {
 	flex-direction: column;
-}
-
-.row--wrap {
-	flex-wrap: wrap;
 }
 
 .row--justify-center {
@@ -46,14 +49,14 @@ $col-num: 24;
 	align-items: flex-end;
 }
 
-$sm: 768px;
-$md: 992px;
-$lg: 1200px;
-$xl: 1900px;
+.col {
+	flex: 0 1 0;
+}
 
 .col-0 {
 	display: none;
 }
+
 @for $i from 1 through $col-num {
 	.col-#{$i} {
 		flex: 0 1 $i / $col-num * 100%;
@@ -61,15 +64,15 @@ $xl: 1900px;
 	.col-offset-#{$i} {
 		margin-left: $i / $col-num * 100%;
 	}
+	.col-push-#{$i} {
+		position: relative;
+		left: $i / $col-num * 100%;
+	}
+	.col-pull-#{$i} {
+		position: relative;
+		right: $i / $col-num * 100%;
+	}
 }
-
-$grid-specs: (
-	"xs": "(max-width: $sm - 1px)",
-	"sm": "(min-width: $sm)",
-	"md": "(min-width: $md)",
-	"lg": "(min-width: $lg)",
-	"xl": "(min-width: $xl)"
-);
 
 @each $label, $media in $grid-specs {
 	@media #{$media} {
