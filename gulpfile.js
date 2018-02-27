@@ -4,9 +4,14 @@ let postcss = require('gulp-postcss')
 let sourcemaps = require('gulp-sourcemaps')
 let autoprefixer = require('autoprefixer')
 let server = require('gulp-webserver')
+// let pump = require('pump')
+// @issue loading gulp-uglify error: Error: Cannot find module 'lodash/fp/isObject'
+// let uglifyJs = require('gulp-uglify')
+let htmlMinifier = require('gulp-html-minifier')
+let clean = require('gulp-clean')
 
 let srcSassFiles = ['./src/layout.scss']
-let docsSassFiles = ['./docs/styles/examples.scss']
+let docsSassFiles = ['./docs-src/styles/examples.scss']
 
 function compileSass (files, compileOptions) {
 	compileOptions = compileOptions || {}
@@ -17,44 +22,33 @@ function compileSass (files, compileOptions) {
 		.pipe(sourcemaps.write('.'))
 }
 
-function compileSrcSass (compileOptions) {
-	return compileSass(srcSassFiles)
-}
-
-function buildSrcSass () {
-	return compileSrcSass({outputStyoe: 'compressed'}).pipe(gulp.dest('./dist'))
-}
-
-function compileDocsSass () {
-	return compileSass(docsSassFiles)
-}
-
-function buildDocsSass () {
-	return compileDocsSass().pipe(gulp.dest('./docs/styles/'))
-}
-
-gulp.task('compile-src-sass', function () {
-	return compileSrcSass()
+gulp.task('build-src', function () {
+	return compileSass(srcSassFiles, {outputStyle: 'compressed'}).pipe(gulp.dest('./dist'))
 })
 
-gulp.task('build-src-sass', function () {
-	return buildSrcSass()
+gulp.task('compile-serve-sass', function () {
+	return compileSass(docsSassFiles).pipe(gulp.dest('./docs-src/styles/'))
 })
 
-gulp.task('compile-docs-sass', function () {
-	return compileDocsSass()
+gulp.task('clean-docs', function () {
+	return gulp.src('./docs/', {read: false}).pipe(clean())
 })
 
-gulp.task('build-docs-sass', function () {
-	return buildDocsSass()
+gulp.task('compile-docs-sass', ['clean-docs'], function () {
+	return compileSass(docsSassFiles, {outputStyle: 'compressed'}).pipe(gulp.dest('./docs/styles'))
 })
 
 // serve the docs
-gulp.task('serve', ['build-docs-sass'], function () {
-	gulp.watch(['./docs/**/*.scss', './src/**/*.scss'], ['build-docs-sass'])
+gulp.task('serve', ['compile-serve-sass'], function () {
+	gulp.watch(['./docs/**/*.scss', './src/**/*.scss'], ['compile-serve-sass'])
 	gulp.src(['./docs', './src'])
 		.pipe(server({
 			livereload: true,
 			port: 8080
 		}))
+})
+
+gulp.task('build-docs', ['compile-docs-sass'], function () {
+	gulp.src(['./docs-src/scripts/**/*.js']).pipe(gulp.dest('./docs/scripts/'))
+	gulp.src(['./docs-src/*.html']).pipe(htmlMinifier({collapseWhitespace: true})).pipe(gulp.dest('./docs'))
 })

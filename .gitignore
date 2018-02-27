@@ -2,3 +2,5 @@ node_modules/
 npm-debug.log
 dist/
 **/.DS_Store
+docs-src/styles/**/*.css
+docs-src/styles/**/*.css.map
