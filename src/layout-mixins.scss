@@ -1,23 +1,149 @@
 /*
- * @file layout-mixins.scss
+ * @author Chockie Zhu
  * @desc sass mixins for layout
  */
 
 @import "./layout-vars.scss";
 
-
-@mixin response ($media) {
-  @if map-has-key($grid-specs, $media) {
-    @media #{map-get($grid-specs, $media)} {
+// media query
+@mixin response ($media-label, $media-specs: $grid-specs) {
+  @if map-has-key($media-specs, $media-label) {
+    @media #{map-get($media-specs, $media-label)} {
       @content;
     }
   }
 }
 
 @mixin make-container () {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+
   @each $media-label, $container-width in $container-specs {
     @include response($media-label) {
       width: $container-width;
+    }
+  }
+}
+
+@mixin make-row () {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  // flex-direction modifier
+  @each $modifier in "vertical" {
+    &--#{$modifier} {
+      flex-direction: column;
+    }
+  }
+
+  // flex-wrap modifier
+  @each $modifier in "no-wrap" {
+    &--#{$modifier} {
+      flex-wrap: no-wrap;
+    }
+  }
+
+  // justify-content modifier
+  @each $modifier in "center", "end", "space-between", "space-evenly" {
+    @if $modifier == 'center' {
+      &--justify-#{$modifier} {
+        justify-content: center;
+      }
+    } @else if $modifier == 'end' {
+      &--justify-#{$modifier} {
+        justify-content: flex-end;
+      }
+    } @else if $modifier == 'space-between' {
+      &--justify-#{$modifier} {
+        justify-content: space-between;
+      }
+    } @else if $modifier == 'space-evenly' {
+      &--justify-#{$modifier} {
+        justify-content: space-evenly;
+      }
+    }
+  }
+
+  // align-items modifier
+  @each $modifier in "start", "center", "end" {
+    @if $modifier == "start" {
+      &--align-#{$modifier} {
+        align-items: flex-start;
+      }
+    } @else if $modifier == "center" {
+      &--align-#{$modifier} {
+        align-items: center;
+      }
+    } @else if $modifier == "end" {
+      &--align-#{$modifier} {
+        align-items: flex-end;
+      }
+    }
+  }
+}
+
+@mixin make-col () {
+  flex: 1 1 0;
+
+  // default mobile columns
+  &-0 {
+    display: none;
+  }
+
+  @for $i from 1 through $col-num {
+    &-#{$i} {
+      flex: 0 0 $i / $col-num * 100%;
+    }
+    &-offset-#{$i} {
+      margin-left: $i / $col-num * 100%;
+    }
+    &-push-#{$i} {
+      position: relative;
+      left: $i / $col-num * 100%;
+    }
+    &-pull-#{$i} {
+      position: relative;
+      right: $i / $col-num * 100%;
+    }
+  }
+
+  // responsive columns
+  @each $label, $media in $grid-specs {
+    @include response ($label) {
+      &-#{$label}-0 {
+        display: none;
+      }
+      @for $i from 1 through $col-num {
+        &-#{$label}-#{$i} {
+          flex: 0 0 $i / $col-num * 100%;
+        }
+        &-#{$label}-offset-#{$i} {
+          margin-left: $i / $col-num * 100%;
+        }
+        &-#{$label}-push-#{$i} {
+          position: relative;
+          left: $i / $col-num * 100%;
+        }
+        &-#{$label}-pull-#{$i} {
+          position: relative;
+          right: $i / $col-num * 100%;
+        }
+      }
+    }
+  }
+}
+
+@mixin make-hidden () {
+  display: none;
+  @each $label, $media in $hidden-specs {
+    @include response($label, $hidden-specs) {
+      &-#{$label} {
+        display: none;
+      }
     }
   }
 }

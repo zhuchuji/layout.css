@@ -32,61 +32,124 @@
 				</div>
 				<div class="part">
 					<h3>Features</h3>
-					<div class="	">
-						<p>The grid system is a mobile-first flexbox grid for layout. "row" and "col" are basic components, where there are 24 columns in a row. The grid system could help you implement various layouts.</p>
-						<div class="row basic-row">
-							<div class="col-12">
-								<div class="block--blue">col-12</div>
+					<p>The grid system is mobile-first, which implement with flexbox. "row" and "col" are two basic components in the grid system, where there are 24 columns in a row. The grid system could help you implement various layouts, but keep in mind that "mobile first" means you are developing websites on mobile devices by default.</p>
+					<div class="demo">
+						<div class="demo-view">
+							<div class="row basic-row">
+								<div class="col-12">
+									<div class="block--blue">col-12</div>
+								</div>
+								<div class="col-12">
+									<div class="block--green">col-12</div>
+								</div>
 							</div>
-							<div class="col-12">
-								<div class="block--green">col-12</div>
+							<div class="row basic-row">
+								<div class="col-8">
+									<div class="block--blue">col-8</div>
+								</div>
+								<div class="col-8">
+									<div class="block--green">col-8</div>
+								</div>
+								<div class="col-8">
+									<div class="block--blue">col-8</div>
+								</div>
+							</div>
+							<div class="row basic-row">
+								<div class="col-12 col-offset-6">
+									<div class="block--blue">col-12 col-offset-6</div>
+								</div>
+							</div>
+							<div class="row basic-row">
+								<div class="col-12 col-push-12">
+									<div class="block--blue">col-12 col-push-12</div>
+								</div>
+								<div class="col-12 col-pull-12">
+									<div class="block--green">col-12 col-pull-12</div>
+								</div>
 							</div>
 						</div>
-						<div class="row basic-row">
-							<div class="col-8">
-								<div class="block--blue">col-8</div>
+						<div class="demo-code">
+							<pre>
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-12"&gt;
+    &lt;div class="block--blue"&gt;col-12&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12"&gt;
+    &lt;div class="block--green"&gt;col-12&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-8"&gt;
+    &lt;div class="block--blue"&gt;col-8&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-8"&gt;
+    &lt;div class="block--green"&gt;col-8&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-8"&gt;
+    &lt;div class="block--blue"&gt;col-8&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-12 col-offset-6"&gt;
+    &lt;div class="block--blue"&gt;col-12 col-offset-6&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-12 col-push-12"&gt;
+    &lt;div class="block--blue"&gt;col-12 col-push-12&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12 col-pull-12"&gt;
+    &lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+	.basic-row {
+		margin-bottom: 20px;
+		line-height: 30px;
+		text-align: center;
+	}
+	.block--blue {
+		color: #e1e6f9;
+	}
+	.block--green {
+		color: #e8f1f0;
+	}
+&lt;/style&gt;
+								</pre>
 							</div>
-							<div class="col-8">
-								<div class="block--green">col-8</div>
-							</div>
-							<div class="col-8">
-								<div class="block--blue">col-8</div>
-							</div>
-						</div>
-						<div class="row basic-row">
-							<div class="col-12 col-offset-6">
-								<div class="block--blue">col-12 col-offset-6</div>
-							</div>
-						</div>
-						<div class="row basic-row">
-							<div class="col-8 col-push-8">
-								<div class="block--blue">col-8 col-push-8</div>
-							</div>
-							<div class="col-8 col-pull-8">
-								<div class="block--green">col-8 col-pull-8</div>
-							</div>
-						</div>
 					</div>
-					<div class="part__item">
-						<p>Responsive layout. Media queries are:</p>
-						<ul>
-							<li>xs -- max-width: 767px</li>
-							<li>sm -- min-width: 768px</li>
-							<li>md -- min-width: 992px</li>
-							<li>lg -- min-width: 1200px</li>
-							<li>xl -- min-width: 1900px</li>
-						</ul>
-						<div class="row basic-row">
-							<div class="col-xs-24 col-sm-20 col-md-16 col-lg-12 block--blue">
-								col-xs-24 col-sm-20 col-md-16 col-lg-12
+					<p>There are a few useful classes for alignment.</p>
+					<ul>
+						<li><code>.row--vertical</code>: change the direction</li>
+						<li><code>.row--no-wrap</code>: unwrap the column when overflowing</li>
+						<li><code>.row--justify-center</code>: justify the content at the center of the row</li>
+						<li><code>.row--justify-end</code>: justify the content at the end of the row</li>
+						<li><code>.row--justify-space-between</code>: justify the content with space-between</li>
+						<li><code>.row--justify-space-evenly</code>: justify the content with space-evenly</li>
+					</ul>
+					<p>Responsive system. Below are media breakpoints:</p>
+					<ul>
+						<li>default: mobile device</li>
+						<li>sm -- min-width: 768px</li>
+						<li>md -- min-width: 992px</li>
+						<li>lg -- min-width: 1200px</li>
+						<li>xl -- min-width: 1900px</li>
+					</ul>
+					<div class="demo">
+						<div class="demo-view">
+							<div class="row basic-row">
+								<div class="col-xs-24 col-sm-20 col-md-16 col-lg-12 block--blue">
+									col-xs-24 col-sm-20 col-md-16 col-lg-12
+								</div>
+							</div>
+							<div class="row basic-row">
+								<div class="col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12 block--blue">
+									col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12
+								</div>
 							</div>
 						</div>
-						<div class="row basic-row">
-							<div class="col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12 block--blue">
-								col-sm-20 col-sm-offset-4 col-md-16 col-md-offset-8 col-lg-12 col-lg-offset-12
-							</div>
+						<div class="demo-code">
 						</div>
-					</div>
 					<div class="part__item">
 						<p>If you need margin between columns, you could set padding in columns</p>
 						<div class="row basic-row">

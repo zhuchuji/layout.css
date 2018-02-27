@@ -8,20 +8,21 @@ let server = require('gulp-webserver')
 let srcSassFiles = ['./src/layout.scss']
 let docsSassFiles = ['./docs/styles/examples.scss']
 
-function compileSass (files) {
+function compileSass (files, compileOptions) {
+	compileOptions = compileOptions || {}
 	return gulp.src(files)
 		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass(compileOptions).on('error', sass.logError))
 		.pipe(postcss([autoprefixer]))
 		.pipe(sourcemaps.write('.'))
 }
 
-function compileSrcSass () {
+function compileSrcSass (compileOptions) {
 	return compileSass(srcSassFiles)
 }
 
 function buildSrcSass () {
-	return compileSrcSass().pipe(gulp.dest('./dist'))
+	return compileSrcSass({outputStyoe: 'compressed'}).pipe(gulp.dest('./dist'))
 }
 
 function compileDocsSass () {

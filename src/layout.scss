@@ -1,121 +1,23 @@
 /*
  * @author Chockie Zhu
- * @desc responsive layout system
+ * @desc responsive grid system
  */
 
 @import "./layout-vars.scss";
 @import "./layout-mixins.scss";
 
 .container {
-	margin-left: auto;
-	margin-right: auto;
 	@include make-container();
 }
 
 .row {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.row--vertical {
-	flex-direction: column;
-}
-
-.row--justify-center {
-	justify-content: center;
-}
-
-.row--justify-end {
-	justify-content: flex-end;
-}
-
-.row--justify-space-between {
-	justify-content: space-between;
-}
-
-.row--justify-space-evenly {
-	justify-content: space-evenly;
-}
-
-.row--align-start {
-	align-items: flex-start;
-}
-
-.row--align-center {
-	align-items: center;
-}
-
-.row--align-end {
-	align-items: flex-end;
+	@include make-row();
 }
 
 .col {
-	flex: 0 1 0;
+	@include make-col();
 }
 
-.col-0 {
-	display: none;
-}
-
-@for $i from 1 through $col-num {
-	.col-#{$i} {
-		flex: 0 1 $i / $col-num * 100%;
-	}
-	.col-offset-#{$i} {
-		margin-left: $i / $col-num * 100%;
-	}
-	.col-push-#{$i} {
-		position: relative;
-		left: $i / $col-num * 100%;
-	}
-	.col-pull-#{$i} {
-		position: relative;
-		right: $i / $col-num * 100%;
-	}
-}
-
-@each $label, $media in $grid-specs {
-	@media #{$media} {
-		.col-#{$label}-0 {
-			display: none;
-		}
-		@for $i from 1 through $col-num {
-			.col-#{$label}-#{$i} {
-				flex: 0 1 $i / $col-num * 100%;
-			}
-			.col-#{$label}-offset-#{$i} {
-				margin-left: $i / $col-num * 100%;
-			}
-			.col-#{$label}-push-#{$i} {
-				position: relative;
-				left: $i / $col-num * 100%;
-			}
-			.col-#{$label}-pull-#{$i} {
-				position: relative;
-				right: $i / $col-num * 100%;
-			}
-		}
-	}
-}
-
-$hidden-specs: (
-	"xs-only": "(max-width: $sm - 1px)",
-	"sm-only": "(min-width: $sm) and (max-width: $md - 1px)",
-	"sm-and-down": "(max-width: $md - 1px)",
-	"sm-and-up": "(min-width: $sm)",
-	"md-only": "(min-width: $md) and (max-width: $lg - 1px)",
-	"md-and-down": "(max-width: $lg - 1px)",
-	"md-and-up": "(min-width: $md)",
-	"lg-only": "(min-width: $lg) and (max-width: $xl - 1px)",
-	"lg-and-down": "(max-width: $xl - 1px)",
-	"lg-and-up": "(min-width: $lg)",
-	"xl-only": "(min-width: $xl)"
-);
-
-@each $label, $media in $hidden-specs {
-	.hidden-#{$label} {
-		@media #{$media} {
-			display: none;
-		}
-	}
+.hidden {
+	@include make-hidden();
 }
