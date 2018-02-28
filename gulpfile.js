@@ -4,9 +4,7 @@ let postcss = require('gulp-postcss')
 let sourcemaps = require('gulp-sourcemaps')
 let autoprefixer = require('autoprefixer')
 let server = require('gulp-webserver')
-// let pump = require('pump')
-// @issue loading gulp-uglify error: Error: Cannot find module 'lodash/fp/isObject'
-// let uglifyJs = require('gulp-uglify')
+let uglifyJs = require('gulp-uglify')
 let htmlMinifier = require('gulp-html-minifier')
 let clean = require('gulp-clean')
 
@@ -40,8 +38,8 @@ gulp.task('compile-docs-sass', ['clean-docs'], function () {
 
 // serve the docs
 gulp.task('serve', ['compile-serve-sass'], function () {
-	gulp.watch(['./docs/**/*.scss', './src/**/*.scss'], ['compile-serve-sass'])
-	gulp.src(['./docs', './src'])
+	gulp.watch(['./docs-src/**/*.scss', './src/**/*.scss'], ['compile-serve-sass'])
+	gulp.src(['./docs-src', './src'])
 		.pipe(server({
 			livereload: true,
 			port: 8080
@@ -49,6 +47,6 @@ gulp.task('serve', ['compile-serve-sass'], function () {
 })
 
 gulp.task('build-docs', ['compile-docs-sass'], function () {
-	gulp.src(['./docs-src/scripts/**/*.js']).pipe(gulp.dest('./docs/scripts/'))
+	gulp.src(['./docs-src/scripts/**/*.js']).pipe(uglifyJs()).pipe(gulp.dest('./docs/scripts/'))
 	gulp.src(['./docs-src/*.html']).pipe(htmlMinifier({collapseWhitespace: true})).pipe(gulp.dest('./docs'))
 })

@@ -114,6 +114,9 @@
   // responsive columns
   @each $label, $media in $grid-specs {
     @include response ($label) {
+      &-#{$label} {
+        flex: 1 1 0;
+      }
       &-#{$label}-0 {
         display: none;
       }
@@ -121,14 +124,14 @@
         &-#{$label}-#{$i} {
           flex: 0 0 $i / $col-num * 100%;
         }
-        &-#{$label}-offset-#{$i} {
+        &-offset-#{$label}-#{$i} {
           margin-left: $i / $col-num * 100%;
         }
-        &-#{$label}-push-#{$i} {
+        &-push-#{$label}-#{$i} {
           position: relative;
           left: $i / $col-num * 100%;
         }
-        &-#{$label}-pull-#{$i} {
+        &-pull-#{$label}-#{$i} {
           position: relative;
           right: $i / $col-num * 100%;
         }
