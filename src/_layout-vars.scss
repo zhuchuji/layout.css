@@ -23,8 +23,8 @@ $grid-specs: (
 // container padding
 $container-padding: 15px !default;
 
-// container width spec
-$container-specs: (
+// container max-width spec
+$container-max-width-specs: (
   "sm": 740px,
   "md": 960px,
   "lg": 1140px,

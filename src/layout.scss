@@ -8,6 +8,11 @@
 
 .container {
 	@include make-container();
+  @include set-container-max-width();
+}
+
+.container-fluid {
+  @include make-container();
 }
 
 .row {

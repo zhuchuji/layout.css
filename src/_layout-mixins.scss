@@ -20,10 +20,13 @@
   margin-right: auto;
   padding-left: $container-padding;
   padding-right: $container-padding;
+  width: 100%;
+}
 
-  @each $media-label, $container-width in $container-specs {
+@mixin set-container-max-width () {
+  @each $media-label, $max-width in $container-max-width-specs {
     @include response($media-label) {
-      width: $container-width;
+      max-width: $max-width;
     }
   }
 }
