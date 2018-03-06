@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>CSS Responsive Layout Framework</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="styles/examples.css"/>
 	</head>
 	<body>
@@ -26,7 +26,7 @@
 		</header>
 		<main class="main">
 			<div class="container">
-				<div><h2>Grid system</h2></div>
+				<div class="row"><h2>Grid system</h2></div>
 				<h3>Overview</h3>
 				<p>The grid system is mobile-first, implemented with flexbox. It is a 24-column and fully responsive grid system with a lot of predefined classes for layout, which could help you implement various kinds of layouts, but keep in mind that "mobile first" means you are developing websites on mobile devices by default.</p>
 				<h3>Containers</h3>
@@ -37,7 +37,6 @@
 					<thead>
 						<tr>
 							<th></th>
-							<th>Extra small</th>
 							<th>Small</th>
 							<th>Medium</th>
 							<th>Large</th>
@@ -47,7 +46,6 @@
 					<tbody>
 						<tr>
 							<td>Label</td>
-							<td></td>
 							<td>sm</td>
 							<td>md</td>
 							<td>lg</td>
@@ -55,7 +53,6 @@
 						</tr>
 						<tr>
 							<td>Media breakpoints</td>
-							<td></td>
 							<td>min-width: 768px</td>
 							<td>min-width: 992px</td>
 							<td>min-width: 1200px</td>
@@ -63,7 +60,6 @@
 						</tr>
 						<tr>
 							<td>Container max-width</td>
-							<td>auto</td>
 							<td>740px</td>
 							<td>960px</td>
 							<td>1140px</td>
@@ -74,11 +70,11 @@
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
-							<div class="col-md">
-								<div class="block--blue">col-sm</div>
+							<div class="col">
+								<div class="block--blue">col</div>
 							</div>
-							<div class="col-md">
-								<div class="block--green">col-sm</div>
+							<div class="col">
+								<div class="block--green">col</div>
 							</div>
 						</div>
 						<div class="row basic-row">
@@ -104,13 +100,45 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md">
-							<pre class="demo__code"></pre>
+						<div class="col-md hidden-xs-only">
+							<pre class="demo__code">
+								<code>
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="block--blue"&gt;col&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="block--green"&gt;col&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-12"&gt;
+    &lt;div class="block--blue"&gt;col-12&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12"&gt;
+    &lt;div class="block--green"&gt;col-12&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-12 col-offset-6"&gt;
+    &lt;div class="block--blue"&gt;col-12 col-offset-6&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-12 col-push-12"&gt;
+    &lt;div class="block--blue"&gt;col-12 col-push-12&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-12 col-pull-12"&gt;
+    &lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+								</code>
+							</pre>
 						</div>
-						<div class="col-md desc">
+						<div class="col-24 col-md desc">
 							<p><code>row</code> and <code>col</code> are the basic components in the grid system. <code>col</code> must be the direct child of <code>row</code>.</p>
-							<p><code>col</code>, <code>col-sm</code>, <code>col-md</code>, <code>col-lg</code> and <code>col-xl</code> are used for equal-width distributions with flexbox's automatic caculation of layout. In the above example, <code>col-md</code> will make the column equal on size on small, medium, large and extra large devices. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
-							<p>Of cousrse you could use <code>col-*</code>, and <code>col-*-*</code> for your layout if the layout is known and unchanged</p>
+							<p><code>col</code>, <code>col-sm</code>, <code>col-md</code>, <code>col-lg</code> and <code>col-xl</code> are used for equal-width distributions with flexbox's automatic caculation of layout. In the above example, <code>col</code> will make the column equal on size on all devices. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
+							<p>Of cousrse you could use <code>col-*</code>, and <code>col-*-*</code> for your layout if the layout is known and unchanged.</p>
 							<p><code>col-offset-*</code> and <code>col-offset-*-*</code> are for column offset to the left. When using <code>col-offset-*</code> and <code>col-offset-*-*</code>, you must not set <code>margin</code> in CSS, since they are implemented with <code>margin</code> and will be overwritted.</p>
 							<p><code>col-push-*</code>, <code>col-pull-*</code>, <code>col-push-*-*</code> and <code>col-pull-*-*</code> are used to set your column's position relative to its original default position.</p>
 						</div>
@@ -121,23 +149,37 @@
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
-							<div class="col-md block--gutter block--first">
-								<div class="block--blue">col-md gutter:10%</div>
+							<div class="col block--gutter block--first">
+								<div class="block--blue">col gutter:10%</div>
 							</div>
-							<div class="col-md block--gutter">
-								<div class="block--green">col-md gutter:10%</div>
+							<div class="col block--gutter">
+								<div class="block--green">col gutter:10%</div>
 							</div>
-							<div class="col-md block--gutter block--last">
-								<div class="block--blue">col-md gutter:10%</div>
+							<div class="col block--gutter block--last">
+								<div class="block--blue">col gutter:10%</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md">
-							<pre class="demo__code"></pre>
+						<div class="col-24 col-md">
+							<pre class="demo__code">
+								<code>
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col block--gutter block--first"&gt;
+    &lt;div class="block--blue"&gt;col gutter:10%&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col block--gutter"&gt;
+    &lt;div class="block--green"&gt;col gutter:10%&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col block--gutter block--last"&gt;
+    &lt;div class="block--blue"&gt;col gutter:10%&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+								</code>
+							</pre>
 						</div>
-						<div class="col-md desc">
-							<p>To add gutter between columns, you should add customed classes with <code>padding</code> on column rather than add <code>padding</code> directly on predefined classes <code>col-*</code>, which will affect all columns on your website and which is not what you want.</p>
+						<div class="col-24 col-md desc">
+							<p>To add gutter between columns, you should add customed classes with <code>padding</code> on column rather than <code>margin</code> directly on predefined classes <code>col-*</code>.Otherwise, it will affect all columns on your website and which is not what you want.</p>
 						</div>
 					</div>
 				</div>
@@ -155,17 +197,26 @@
 					<li><code>.row--align-end</code>: align content at the end</li>
 				</ul>
 				<h3>Responsive column</h3>
+				<p><code>col</code> and <code>col-*</code> are used for mobile layout. <code>col-sm</code> and <code>col-sm-*</code> are used for small device layout. <code>col-md</code> and <code>col-md-*</code> are used for medium device layout. <code>col-lg</code> and <code>col-lg-*</code> are used for large device layout and <code>col-xl</code> and <code>col-xl-*</code> are used for extra large device layout. Besides, <code>col-offset-*</code>, <code>col-offset-sm-*</code>, <code>col-offset-md-*</code>, <code>col-offset-lg-*</code>, and <code>col-offset-xl-*</code> are provided as well as <code>col-push-*</code>, <code>col-pull-*</code>, <code>col</code></p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
-							<div class="col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8 block--blue">
-								col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8
+							<div class="col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8">
+								<div class="block--blue">col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md">
-							<pre class="demo__code"></pre>
+							<pre class="demo__code">
+								<code>
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8 block--blue"&gt;
+    col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8
+  &lt;/div&gt;
+&lt;/div&gt;
+								</code>
+							</pre>
 						</div>
 						<div class="col-md desc">
 							<p>Responsive columns are designed from small devices and up, e.g, <code>col-24</code> occupy 24 grids on extra small devices and up, <code>col-sm-20</code> will overwrite the width on small devices and up and so on. Combining different responsive column classes are common usage in responsive web.</p>

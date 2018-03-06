@@ -91,6 +91,7 @@
 
 @mixin make-col () {
   flex: 1 1 0;
+  max-width: 100%;
 
   // default mobile columns
   &-0 {
@@ -100,6 +101,7 @@
   @for $i from 1 through $col-num {
     &-#{$i} {
       flex: 0 0 $i / $col-num * 100%;
+      max-width: 100%;
     }
     &-offset-#{$i} {
       margin-left: $i / $col-num * 100%;
@@ -119,6 +121,7 @@
     @include response ($label) {
       &-#{$label} {
         flex: 1 1 0;
+        max-width: 100%;
       }
       &-#{$label}-0 {
         display: none;
@@ -126,6 +129,7 @@
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
           flex: 0 0 $i / $col-num * 100%;
+          max-width: 100%;
         }
         &-offset-#{$label}-#{$i} {
           margin-left: $i / $col-num * 100%;

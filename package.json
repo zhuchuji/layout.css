@@ -8,8 +8,8 @@
     "docs": "gulp build-docs",
     "serve": "gulp serve"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["layout", "grid", "flexbox", "sass"],
+  "author": "Chockie",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.4",
