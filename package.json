@@ -8,7 +8,12 @@
     "docs": "gulp build-docs",
     "serve": "gulp serve"
   },
-  "keywords": ["layout", "grid", "flexbox", "sass"],
+  "keywords": [
+    "layout",
+    "grid",
+    "flexbox",
+    "sass"
+  ],
   "author": "Chockie",
   "license": "ISC",
   "devDependencies": {
@@ -20,7 +25,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.3",
     "gulp-uglify": "^3.0.0",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "pump": "^3.0.0"
   },
   "dependencies": {}
 }

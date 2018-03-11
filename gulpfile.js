@@ -5,6 +5,7 @@ let sourcemaps = require('gulp-sourcemaps')
 let autoprefixer = require('autoprefixer')
 let server = require('gulp-webserver')
 let uglifyJs = require('gulp-uglify')
+let pump = require('pump')
 let htmlMinifier = require('gulp-html-minifier')
 let clean = require('gulp-clean')
 
@@ -41,12 +42,18 @@ gulp.task('serve', ['compile-serve-sass'], function () {
 	gulp.watch(['./docs-src/**/*.scss', './src/**/*.scss'], ['compile-serve-sass'])
 	gulp.src(['./docs-src', './src'])
 		.pipe(server({
+			host: process.env.HOST || 'localhost',
 			livereload: true,
 			port: 8080
 		}))
 })
 
-gulp.task('build-docs', ['compile-docs-sass'], function () {
-	gulp.src(['./docs-src/scripts/**/*.js']).pipe(uglifyJs()).pipe(gulp.dest('./docs/scripts/'))
+gulp.task('build-docs', ['compile-docs-sass'], function (cb) {
+	// gulp.src(['./docs-src/**/*.js']).pipe(uglifyJs()).pipe(gulp.dest('./docs/'))
+	pump([
+		gulp.src(['./docs-src/**/**/*.js']),
+		uglifyJs(),
+		gulp.dest('./docs/')
+	], cb)
 	gulp.src(['./docs-src/*.html']).pipe(htmlMinifier({collapseWhitespace: true})).pipe(gulp.dest('./docs'))
 })

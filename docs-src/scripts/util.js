@@ -1,14 +1,6 @@
-define(function () {
+(function () {
   function documentReady (callback) {
     document.addEventListener('DOMContentLoaded', callback, false)
-  }
-
-  function filterToArray () {
-    var args = arguments
-    var array = Array.prototype.filter.call(args, function (value) {
-      return Boolean(value)
-    })
-    return array
   }
 
   var cssClassUtil = {
@@ -34,8 +26,8 @@ define(function () {
     }
   }
 
-  return {
+  window.util = {
     documentReady: documentReady,
     cssClassUtil: cssClassUtil
   }
-})
+})()

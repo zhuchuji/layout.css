@@ -91,6 +91,7 @@
 
 @mixin make-col () {
   flex: 1 1 0;
+  box-sizing: border-box;
   max-width: 100%;
 
   // default mobile columns
@@ -100,7 +101,9 @@
 
   @for $i from 1 through $col-num {
     &-#{$i} {
+      display: block;
       flex: 0 0 $i / $col-num * 100%;
+      box-sizing: border-box;
       max-width: 100%;
     }
     &-offset-#{$i} {
@@ -120,6 +123,7 @@
   @each $label, $media in $grid-specs {
     @include response ($label) {
       &-#{$label} {
+        display: block;
         flex: 1 1 0;
         max-width: 100%;
       }
@@ -128,6 +132,7 @@
       }
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
+          display: block;
           flex: 0 0 $i / $col-num * 100%;
           max-width: 100%;
         }
