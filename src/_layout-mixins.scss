@@ -94,6 +94,12 @@
   box-sizing: border-box;
   max-width: 100%;
 
+  // column auto-fit content
+  &-auto {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
   // default mobile columns
   &-0 {
     display: none;
@@ -101,7 +107,6 @@
 
   @for $i from 1 through $col-num {
     &-#{$i} {
-      display: block;
       flex: 0 0 $i / $col-num * 100%;
       box-sizing: border-box;
       max-width: 100%;
@@ -123,16 +128,21 @@
   @each $label, $media in $grid-specs {
     @include response ($label) {
       &-#{$label} {
-        display: block;
         flex: 1 1 0;
         max-width: 100%;
       }
+
+      &-#{$label}-auto {
+        flex: 0 0 auto;
+        max-width: none;
+      }
+
       &-#{$label}-0 {
         display: none;
       }
+
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
-          display: block;
           flex: 0 0 $i / $col-num * 100%;
           max-width: 100%;
         }
@@ -154,6 +164,7 @@
 
 @mixin make-hidden () {
   display: none;
+
   @each $label, $media in $hidden-specs {
     @include response($label, $hidden-specs) {
       &-#{$label} {
