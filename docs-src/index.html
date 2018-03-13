@@ -38,11 +38,11 @@
 			<div class="container">
 				<div class="row"><h2>Grid system</h2></div>
 				<h3>Overview</h3>
-				<p>The grid system is mobile-first, implemented with flexbox. It is a 24-column and fully responsive grid system with a lot of predefined classes for layout, which could help you implement various kinds of layouts, but keep in mind that "mobile first" means you are developing websites on mobile devices by default.</p>
+				<p>The grid is a mobile-first, 24-column and fully responsive grid system. We provide wrapping containers, grids, responsive utility and typical layouts with a lot of predefined classes, which could help you implement various kinds of layouts, but keep in mind that "mobile first" means you are developing websites on mobile devices by default.</p>
 				<h3>Containers</h3>
-				<p>We provide fixed-width and fluid-width containers. Fixed-width container will change its <code>max-width</code> according to media breakpoints. Fluid-width container will keep 100% wide on all devices.</p>
+				<p>We provide fixed-width and fluid-width containers. Fixed-width <code>container</code> will change its <code>max-width</code> according to media breakpoints. Fluid-width <code>container-fluid</code> will keep 100% wide on all devices. We add 15px <code>padding</code> on containers, which could be overwrited by custom classes. Even sometimes you may find out you don't need a container since row takes up 100% wide of its parent.</p>
 				<h3>Grids</h3>
-				<p>Flexbox and media query are the keys in our grid system. We set the media breakpoints according to <a href="http://www.websitedimensions.com/">WebDimensions</a>, which statisic most users' devices worldwide. Flexbox make the flexible rows and columns magical.</p>
+				<p>We build up a 24-column system with flexbox and media query. Media breakpoints are set according to <a href="http://www.websitedimensions.com/">WebDimensions</a>, which statisic most users' devices worldwide. Flexbox make the grids flexible and magical.</p>
 				<div class="table__wrapper">
 					<table class="table table-bordered media-bp-table">
 						<thead>
@@ -112,10 +112,8 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-0 col-sm">
-							<pre class="demo__code">
-								<code class="html">
-&lt;div class="row basic-row"&gt;
+						<div class="col-24 col-sm">
+							<pre class="demo__code"><code class="html">&lt;div class="row basic-row"&gt;
   &lt;div class="col"&gt;
     &lt;div class="block--blue"&gt;col&lt;/div&gt;
   &lt;/div&gt;
@@ -143,9 +141,7 @@
   &lt;div class="col-12 col-pull-12"&gt;
     &lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-            		</code>
-							</pre>
+&lt;/div&gt;</code></pre>
 						</div>
 						<div class="col-24 col-sm desc">
 							<p><code>row</code> and <code>col</code> are the basic components in the grid system. <code>col</code> must be the direct child of <code>row</code>.</p>
