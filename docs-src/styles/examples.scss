@@ -125,12 +125,11 @@ a {
 
 .demo__code {
   margin: 0;
+  min-height: 100%;
   background-color: $demo-bg-color;
-}
-
-.demo__code {
 
   .hljs {
+    min-height: 100% !important;
     background-color: $demo-bg-color;
   }
 }
@@ -158,15 +157,15 @@ a {
 }
 
 .block--gutter {
-  margin: 0 5%;
+  padding: 0 5%;
 }
 
 .block--first {
-  margin-left: 0;
+  padding-left: 0;
 }
 
 .block--last {
-  margin-right: 0;
+  padding-right: 0;
 }
 
 .block--bordered {
@@ -190,7 +189,7 @@ a {
   }
 }
 
-.media-bp-table {
+.media-bp-table, .media-container-table {
   min-width: 600px;
   text-align: center;
 }

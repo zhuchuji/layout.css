@@ -41,10 +41,8 @@
 				<p>The grid is a mobile-first, 24-column and fully responsive grid system. We provide wrapping containers, grids, responsive utility and typical layouts with a lot of predefined classes, which could help you implement various kinds of layouts, but keep in mind that "mobile first" means you are developing websites on mobile devices by default.</p>
 				<h3>Containers</h3>
 				<p>We provide fixed-width and fluid-width containers. Fixed-width <code>container</code> will change its <code>max-width</code> according to media breakpoints. Fluid-width <code>container-fluid</code> will keep 100% wide on all devices. We add 15px <code>padding</code> on containers, which could be overwrited by custom classes. Even sometimes you may find out you don't need a container since row takes up 100% wide of its parent.</p>
-				<h3>Grids</h3>
-				<p>We build up a 24-column system with flexbox and media query. Media breakpoints are set according to <a href="http://www.websitedimensions.com/">WebDimensions</a>, which statisic most users' devices worldwide. Flexbox make the grids flexible and magical.</p>
 				<div class="table__wrapper">
-					<table class="table table-bordered media-bp-table">
+					<table class="table table-bordered media-container-table">
 						<thead>
 							<tr>
 								<th></th>
@@ -55,13 +53,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Label</td>
-								<td>sm</td>
-								<td>md</td>
-								<td>lg</td>
-								<td>xl</td>
-							</tr>
 							<tr>
 								<td>Media breakpoints</td>
 								<td>min-width: 768px</td>
@@ -79,6 +70,8 @@
 						</tbody>
 					</table>
 				</div>
+				<h3>Grids</h3>
+				<p>We build up a 24-column system with flexbox. Flexbox make the grids flexible and magical.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -112,7 +105,7 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-24 col-sm">
+						<div class="col-24 col-sm-12">
 							<pre class="demo__code"><code class="html">&lt;div class="row basic-row"&gt;
   &lt;div class="col"&gt;
     &lt;div class="block--blue"&gt;col&lt;/div&gt;
@@ -143,9 +136,9 @@
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 						</div>
-						<div class="col-24 col-sm desc">
-							<p><code>row</code> and <code>col</code> are the basic components in the grid system. <code>col</code> must be the direct child of <code>row</code>.</p>
-							<p><code>col</code>, <code>col-sm</code>, <code>col-md</code>, <code>col-lg</code> and <code>col-xl</code> are used for equal-width distributions with flexbox's automatic caculation of layout. In the above example, <code>col</code> will make the column equal on size on all devices. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
+						<div class="col-24 col-sm-12 desc">
+							<p><code>row</code> and <code>col</code> are the basic components in the grid system. And <code>col</code> must be the direct child of <code>row</code>.</p>
+							<p><code>col</code> are used for equal-width distributions with flexbox's automatic caculation for layout. In the above example, <code>col</code> will make the column equal on size on all devices. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
 							<p>Of cousrse you could use <code>col-*</code>, and <code>col-*-*</code> for your layout if the layout is known and unchanged.</p>
 							<p><code>col-offset-*</code> and <code>col-offset-*-*</code> are for column offset to the left. When using <code>col-offset-*</code> and <code>col-offset-*-*</code>, you must not set <code>margin</code> in CSS, since they are implemented with <code>margin</code> and will be overwritted.</p>
 							<p><code>col-push-*</code>, <code>col-pull-*</code>, <code>col-push-*-*</code> and <code>col-pull-*-*</code> are used to set your column's position relative to its original default position.</p>
@@ -153,7 +146,7 @@
 					</div>
 				</div>
 				<h3>Gutter</h3>
-				<p>We don't provide gutters between columns, since it might be any value in real websites and for present flexbox doesn't provide similar functionality. We will implement this function with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a> in future. If you need gutters between columns, you could set <code>padding</code> in columns.</p>
+				<p>We don't provide gutters between columns, since it might be any value in real websites. For present, we could implement similar effect with flex <code>justfiy-content: space-between</code>, but it's not a fixed-width gutter. We will implement this function with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a> in future. If you need gutters between columns, you could set <code>margin</code> or <code>padding</code> in columns.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -169,49 +162,89 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-0 col-sm">
-							<pre class="demo__code">
-								<code>
-								</code>
-							</pre>
+						<div class="col-24 col-sm-12">
+							<pre class="demo__code"><code>&lt;div class="row basic-row"&gt;
+  &lt;div class="col block--gutter block--first"&gt;
+    &lt;div class="block--blue"&gt;col gutter: 10%&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col block--gutter"&gt;
+    &lt;div class="block--green"&gt;col gutter: 10%&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col block--gutter block--last"&gt;
+    &lt;div class="block--blue"&gt;col gutter: 10%&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;style&gt;
+  .block--gutter {
+    margin: 0 5%;
+  }
+  .block--first {
+    margin-left: 0;
+  }
+  .block--last {
+    margin-right: 0;
+  }
+&lt;/style&gt;
+							</code></pre>
 						</div>
-						<div class="col-24 col-sm desc">
-							<p>To add gutter between columns, you should add customed classes with <code>margin</code> or <code>padding</code> on column directly on predefined classes <code>col-*</code>. Otherwise, it will affect all columns on your website and which is not what you want.</p>
+						<div class="col-24 col-sm-12 desc">
+							<p>To add gutter between columns, you should add customed classes with <code>margin</code> or <code>padding</code> on column rather than modifying directly on predefined classes <code>col-*</code>. Otherwise, it will affect all columns on your website and which completely is not what you want.</p>
 						</div>
 					</div>
 				</div>
-				<h3>Alignment</h3>
-				<p>We provide useful classes for alignment.</p>
-				<ul>
-					<li><code>row--vertical</code>: change the direction</li>
-					<li><code>row--no-wrap</code>: unwrap the column when overflowing</li>
-					<li><code>row--justify-center</code>: justify the content at the center of the row</li>
-					<li><code>row--justify-end</code>: justify the content at the end of the row</li>
-					<li><code>row--justify-space-between</code>: justify the content with space-between</li>
-					<li><code>row--justify-space-evenly</code>: justify the content with space-evenly</li>
-					<li><code>row--align-start</code>: align the content at flex start</li>
-					<li><code>row--align-center</code>: align content at the center</li>
-					<li><code>row--align-end</code>: align content at the end</li>
-				</ul>
 				<h3>Responsive column</h3>
-				<p><code>col</code> and <code>col-*</code> are used for mobile layout. <code>col-sm</code> and <code>col-sm-*</code> are used for small device layout. <code>col-md</code> and <code>col-md-*</code> are used for medium device layout. <code>col-lg</code> and <code>col-lg-*</code> are used for large device layout and <code>col-xl</code> and <code>col-xl-*</code> are used for extra large device layout. Besides, <code>col-offset-*</code>, <code>col-offset-sm-*</code>, <code>col-offset-md-*</code>, <code>col-offset-lg-*</code>, and <code>col-offset-xl-*</code> are provided as well as <code>col-push-*</code>, <code>col-pull-*</code>, <code>col</code></p>
+				<p>We build the responsive grids with media query, so that it could meet the need for responsive web. Media breakpoints are set according to <a href="http://www.websitedimensions.com/">WebDimensions</a>, which statisic most users' devices worldwide.</p>
+				<div class="table__wrapper">
+					<table class="table table-bordered media-bp-table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Small</th>
+								<th>Medium</th>
+								<th>Large</th>
+								<th>Extra large</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Label</td>
+								<td>sm</td>
+								<td>md</td>
+								<td>lg</td>
+								<td>xl</td>
+							</tr>
+							<tr>
+								<td>Media breakpoints</td>
+								<td>min-width: 768px</td>
+								<td>min-width: 992px</td>
+								<td>min-width: 1200px</td>
+								<td>min-width: 1900px</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p><code>col</code> and <code>col-*</code> are used for mobile layout by default. <code>col-sm</code> and <code>col-sm-*</code> are used for small device layout. <code>col-md</code> and <code>col-md-*</code> are used for medium device layout. <code>col-lg</code> and <code>col-lg-*</code> are used for large device layout and <code>col-xl</code> and <code>col-xl-*</code> are used for extra large device layout. Besides, <code>col-offset-*</code>, <code>col-offset-sm-*</code>, <code>col-offset-md-*</code>, <code>col-offset-lg-*</code>, and <code>col-offset-xl-*</code> are provided as well as <code>col-push-*</code>, <code>col-pull-*</code>, <code>col</code></p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
 							<div class="col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8">
-								<div class="block--blue">col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8</div>
+								<div class="block--blue">
+									col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-0 col-sm">
-							<pre class="demo__code">
-								<code>
-								</code>
-							</pre>
+						<div class="col-24 col-sm-12">
+							<pre class="demo__code"><code>&lt;div class="col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8"&gt;
+  &lt;div class="block--blue"&gt;
+    col-24 col-sm-20 col-md-16 col-lg-12 col-xl-8
+  &lt;/div&gt;
+&lt;/div&gt;
+							</code></pre>
 						</div>
-						<div class="col-24 col-sm desc">
-							<p>Responsive columns are designed from small devices and up, e.g, <code>col-24</code> occupy 24 grids on extra small devices and up, <code>col-sm-20</code> will overwrite the width on small devices and up and so on. Combining different responsive column classes are common usage in responsive web.</p>
+						<div class="col-24 col-sm-12 desc">
+							<p>Responsive columns are designed from small devices and up, e.g, <code>col-24</code> occupy 24 grids on extra small devices and up, <code>col-sm-20</code> will overwrite the width on small devices and up and so on. Combining different responsive column classes is common and effective in responsive web.</p>
 						</div>
 					</div>
 				</div>
@@ -242,16 +275,37 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-0 col-sm">
-							<pre class="demo__code"></pre>
+						<div class="col-24 col-sm-12">
+							<pre class="demo__code"><code>&lt;div class="row basic-row block--bordered"&gt;
+  &lt;div class="col-24"&gt;
+    outer layout
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="block--green"&gt;outer grid&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="row basic-row block--bordered"&gt;
+      &lt;div class="col-24"&gt;
+        inner layout
+      &lt;/div&gt;
+      &lt;div class="col"&gt;
+        &lt;div class="block--blue"&gt;inner grid&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col"&gt;
+        &lt;div class="block--green"&gt;inner grid&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+							</code></pre>
 						</div>
-						<div class="col-24 col-sm desc">
-							<p>With nested grid, you could implement most kind of layouts.</p>
+						<div class="col-24 col-sm-12 desc">
+							<p>With nested grid, you could implement complicated layouts.</p>
 						</div>
 					</div>
 				</div>
 				<h3>Mixed Layout</h3>
-				<p>In responsive web, you could mix fixed-width column with auto-sized column</p>
+				<p>In responsive web, you could mix fixed-width column with fluid-width column</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -263,7 +317,36 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-24 col-sm-12">
+							<pre class="demo__code"><code>&lt;div class="row basic-row"&gt;
+  &lt;div class="col-8"&gt;
+    &lt;div class="block--blue"&gt;col-8&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="block--green"&gt;col&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+							</code></pre>
+						</div>
+						<div class="col-24 col-sm-12 desc">
+							<p>With nested grid, you could implement complicated layouts.</p>
+						</div>
+					</div>
 				</div>
+				<h3>Justify And Alignment</h3>
+				<p>We provide useful classes for justify and alignment.</p>
+				<ul>
+					<li><code>row--vertical</code>: change the direction to vertical</li>
+					<li><code>row--no-wrap</code>: unwrap the column when overflowing</li>
+					<li><code>row--justify-center</code>: justify the content at the center of the row</li>
+					<li><code>row--justify-end</code>: justify the content at the end of the row</li>
+					<li><code>row--justify-space-between</code>: justify the content with space-between</li>
+					<li><code>row--justify-space-evenly</code>: justify the content with space-evenly</li>
+					<li><code>row--align-start</code>: align the content at flex start</li>
+					<li><code>row--align-center</code>: align content at the center</li>
+					<li><code>row--align-end</code>: align content at the end</li>
+				</ul>
 				<h3>Hidden</h3>
 				<p>Classes for hidding content</p>
 				<ul>
