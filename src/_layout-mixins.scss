@@ -96,7 +96,7 @@
   max-width: 100%;
 
   // column auto-fit content
-  &-auto {
+  &-fit {
     flex: 0 0 auto;
     box-sizing: border-box;
     max-width: none;
@@ -137,7 +137,7 @@
         max-width: 100%;
       }
 
-      &-#{$label}-auto {
+      &-#{$label}-fit {
         flex: 0 0 auto;
         box-sizing: border-box;
         max-width: none;

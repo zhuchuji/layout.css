@@ -42,7 +42,7 @@ gulp.task('serve', ['compile-serve-sass'], function () {
 	gulp.watch(['./docs-src/**/*.scss', './src/**/*.scss'], ['compile-serve-sass'])
 	gulp.src(['./docs-src', './src'])
 		.pipe(server({
-			host: process.env.HOST || 'localhost',
+			host: process.env.HOST || '0.0.0.0',
 			livereload: true,
 			port: 8080
 		}))

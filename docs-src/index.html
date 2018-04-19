@@ -20,13 +20,13 @@
 						<div class="menu__mask hidden-sm-and-up menu__mask--hidden">
 						</div>
 						<ul class="row row--justify-end menu__list">
-							<li class="col-24 col-sm-auto menu-item">
+							<li class="col-24 col-sm-fit menu-item">
 								<a class="menu-item__link header__text">Guide</a>
 							</li>
-							<li class="col-24 col-sm-auto menu-item">
+							<li class="col-24 col-sm-fit menu-item">
 								<a class="menu-item__link header__text">Version: 1.0.0</a>
 							</li>
-							<li class="col-24 col-sm-auto menu-item">
+							<li class="col-24 col-sm-fit menu-item">
 								<a class="menu-item__link header__text">Language: English</a>
 							</li>
 						</ul>
@@ -71,7 +71,7 @@
 					</table>
 				</div>
 				<h3>Grids</h3>
-				<p>We build up a 24-column system with flexbox. Flexbox make the grids flexible and magical.</p>
+				<p>We build up a 24-column system with flexbox. Flexbox make the grids flexible and magical. <code>row</code> and <code>col</code> are the basic components in the grid system.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -80,6 +80,14 @@
 							</div>
 							<div class="col">
 								<div class="block--green">col</div>
+							</div>
+						</div>
+						<div class="row basic-row">
+							<div class="col-fit">
+								<div class="block--blue">col-fit</div>
+							</div>
+							<div class="col-fit">
+								<div class="block--green">col-fit</div>
 							</div>
 						</div>
 						<div class="row basic-row">
@@ -115,6 +123,14 @@
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row basic-row"&gt;
+  &lt;div class="col-fit"&gt;
+    &lt;div class="block--blue"&gt;col-fit&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-fit"&gt;
+    &lt;div class="block--green"&gt;col-fit&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
   &lt;div class="col-12"&gt;
     &lt;div class="block--blue"&gt;col-12&lt;/div&gt;
   &lt;/div&gt;
@@ -134,19 +150,21 @@
   &lt;div class="col-12 col-pull-12"&gt;
     &lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+							</code></pre>
 						</div>
 						<div class="col-24 col-sm-12 desc">
-							<p><code>row</code> and <code>col</code> are the basic components in the grid system. And <code>col</code> must be the direct child of <code>row</code>.</p>
-							<p><code>col</code> are used for equal-width distributions with flexbox's automatic caculation for layout. In the above example, <code>col</code> will make the column equal on size on all devices. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
-							<p>Of cousrse you could use <code>col-*</code>, and <code>col-*-*</code> for your layout if the layout is known and unchanged.</p>
-							<p><code>col-offset-*</code> and <code>col-offset-*-*</code> are for column offset to the left. When using <code>col-offset-*</code> and <code>col-offset-*-*</code>, you must not set <code>margin</code> in CSS, since they are implemented with <code>margin</code> and will be overwritted.</p>
-							<p><code>col-push-*</code>, <code>col-pull-*</code>, <code>col-push-*-*</code> and <code>col-pull-*-*</code> are used to set your column's position relative to its original default position.</p>
+							<p><code>col</code> must be the direct child of <code>row</code>. We recommend that seperate layout from your content, so be careful if you modify positioning style on <code>row</code> and <code>col</code> directly.</p>
+							<p><code>col</code> will take up <code>row</code> space and make it equally distributed. Here flexbox's automatic caculation for layout makes the magic. In the above example, <code>col</code> will make the column equal on width. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
+							<p><code>col-fit</code> could make the column fit the content precisely, which will not take any extra space.
+							<p>Of cousrse you could use <code>col-*</code> if the layout is known and unchanged.</p>
+							<p><code>col-offset-*</code> are for column offset to the left. When using <code>col-offset-*</code>, you must not set <code>margin</code> in CSS, since they are implemented with <code>margin</code> and will be overwritted.</p>
+							<p><code>col-push-*</code> and <code>col-pull-*</code> are used to set your column's position relative to its original default position.</p>
 						</div>
 					</div>
 				</div>
 				<h3>Gutter</h3>
-				<p>We don't provide gutters between columns, since it might be any value in real websites. For present, we could implement similar effect with flex <code>justfiy-content: space-between</code>, but it's not a fixed-width gutter. We will implement this function with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a> in future. If you need gutters between columns, you could set <code>margin</code> or <code>padding</code> in columns.</p>
+				<p>We don't provide gutters between columns, since it might be any value in real websites. For present, we could implement similar effect with flex <code>justfiy-content: space-between</code>, but it's not a fixed-width gutter. We will implement this function with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a> in future. If you do need gutters between columns, you could set <code>margin</code> or <code>padding</code> in columns.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -192,7 +210,7 @@
 						</div>
 					</div>
 				</div>
-				<h3>Responsive column</h3>
+				<h3>Responsive Column</h3>
 				<p>We build the responsive grids with media query, so that it could meet the need for responsive web. Media breakpoints are set according to <a href="http://www.websitedimensions.com/">WebDimensions</a>, which statisic most users' devices worldwide.</p>
 				<div class="table__wrapper">
 					<table class="table table-bordered media-bp-table">
@@ -248,8 +266,8 @@
 						</div>
 					</div>
 				</div>
-				<h3>Nested grid</h3>
-				<p>Nested layout is also another basic usage in web development.</p>
+				<h3>Nested Grid</h3>
+				<p>Nested layout is also another basic usage in web development. You could nest <code>row</code> and <code>col</code> to any level deep, but be awera that do not nested <code>containers</code>.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row block--bordered">
@@ -300,12 +318,12 @@
 							</code></pre>
 						</div>
 						<div class="col-24 col-sm-12 desc">
-							<p>With nested grid, you could implement complicated layouts.</p>
+							<p>With nested grid, we could implement complicated layouts.</p>
 						</div>
 					</div>
 				</div>
 				<h3>Mixed Layout</h3>
-				<p>In responsive web, you could mix fixed-width column with fluid-width column</p>
+				<p>In responsive web, you could mix fixed-width column with fluid-width column in a <code>row</code></p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -314,6 +332,22 @@
 							</div>
 							<div class="col">
 								<div class="block--green">col</div>
+							</div>
+						</div>
+						<div class="row basic-row">
+							<div class="col-8">
+								<div class="block--blue">col-8</div>
+							</div>
+							<div class="col-fit">
+								<div class="block--green">col-fit</div>
+							</div>
+						</div>
+						<div class="row basic-row">
+							<div class="col">
+								<div class="block--blue">col</div>
+							</div>
+							<div class="col-fit">
+								<div class="block--green">col-fit</div>
 							</div>
 						</div>
 					</div>
@@ -327,15 +361,31 @@
     &lt;div class="block--green"&gt;col&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col-8"&gt;
+    &lt;div class="block--blue"&gt;col-8&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-fit"&gt;
+    &lt;div class="block--green"&gt;col-fit&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+  &lt;div class="col"&gt;
+    &lt;div class="block--blue"&gt;col&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-fit"&gt;
+    &lt;div class="block--green"&gt;col-fit&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
 							</code></pre>
 						</div>
 						<div class="col-24 col-sm-12 desc">
-							<p>With nested grid, you could implement complicated layouts.</p>
+							<p>Perhaps mixed-layout will solve your issues sometimes.</p>
 						</div>
 					</div>
 				</div>
-				<h3>Justify And Alignment</h3>
-				<p>We provide useful classes for justify and alignment.</p>
+				<h3>Justifying And Alignment</h3>
+				<p>We provide useful classes for justifying and alignment.</p>
 				<ul>
 					<li><code>row--vertical</code>: change the direction to vertical</li>
 					<li><code>row--no-wrap</code>: unwrap the column when overflowing</li>
@@ -363,7 +413,7 @@
 					<li>hidden-xl-only</li>
 				</ul>
 				<h3>Browser Compatibility</h3>
-				<p>Chrome, Safari, Firefox, IE10+, Edge</p>
+				<p>Chrome, Firefox, Safari, IE10+, Edge</p>
 			</div>
 		</main>
 		<script src="scripts/util.js"></script>
