@@ -94,6 +94,7 @@
   flex: 1 1 0;
   box-sizing: border-box;
   max-width: 100%;
+  overflow: auto;
 
   // column auto-fit content
   &-fit {
@@ -114,6 +115,7 @@
       flex: 0 0 $i / $col-num * 100%;
       box-sizing: border-box;
       max-width: 100%;
+      overflow: auto;
     }
     &-offset-#{$i} {
       margin-left: $i / $col-num * 100%;
@@ -135,6 +137,7 @@
         flex: 1 1 0;
         box-sizing: border-box;
         max-width: 100%;
+        overflow: auto;
       }
 
       &-#{$label}-fit {
@@ -154,6 +157,7 @@
           flex: 0 0 $i / $col-num * 100%;
           box-sizing: border-box;
           max-width: 100%;
+          overflow: auto;
         }
         &-offset-#{$label}-#{$i} {
           margin-left: $i / $col-num * 100%;
