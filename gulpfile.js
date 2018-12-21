@@ -23,6 +23,7 @@ function compileSass (files, compileOptions) {
 
 gulp.task('build-src', function () {
 	return compileSass(srcSassFiles, {outputStyle: 'compressed'}).pipe(gulp.dest('./dist'))
+	// return compileSass(srcSassFiles).pipe(gulp.dest('./dist'))
 })
 
 gulp.task('compile-serve-sass', function () {
@@ -44,7 +45,7 @@ gulp.task('serve', ['compile-serve-sass'], function () {
 		.pipe(server({
 			host: process.env.HOST || '0.0.0.0',
 			livereload: true,
-			port: 8080
+			port: 9000
 		}))
 })
 

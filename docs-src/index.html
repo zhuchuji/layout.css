@@ -38,9 +38,9 @@
 			<div class="container">
 				<div class="row"><h2>Grid system</h2></div>
 				<h3>Overview</h3>
-				<p>The grid is a mobile-first, 24-column and fully responsive grid system. We provide wrapping containers, grids, responsive utility and typical layouts with a lot of predefined classes, which could help you implement various kinds of layouts, but keep in mind that "mobile first" means you are developing websites on mobile devices by default.</p>
+				<p>The grid is a mobile-first, 24-column and fully responsive grid system. We provide wrapping containers, grids, responsive utility and typical layouts with a lot of predefined classes, which could help you implement most kind of layouts (if not all). Keep in mind that "mobile first" means you are doing layouts on mobile devices by default.</p>
 				<h3>Containers</h3>
-				<p>We provide fixed-width and fluid-width containers. Fixed-width <code>container</code> will change its <code>max-width</code> according to media breakpoints. Fluid-width <code>container-fluid</code> will keep 100% wide on all devices. We add 15px <code>padding</code> on containers, which could be overwrited by custom classes. Even sometimes you may find out you don't need a container since row takes up 100% wide of its parent.</p>
+				<p>We provide fixed-width and fluid-width containers. Fixed-width <code>container</code> has a restrict width with <code>max-width</code>, which changes according to media breakpoints. Fluid-width <code>container-fluid</code> will keep 100% wide on all devices. We add 15px <code>padding</code> on containers, which could be overwritten by custom classes. Even sometimes you may find out you don't need a container since row takes up 100% wide of its parent.</p>
 				<div class="table__wrapper">
 					<table class="table table-bordered media-container-table">
 						<thead>
@@ -72,6 +72,12 @@
 				</div>
 				<h3>Grids</h3>
 				<p>We build up a 24-column system with flexbox. Flexbox make the grids flexible and magical. <code>row</code> and <code>col</code> are the basic components in the grid system.</p>
+				<p>We provide three kinds of columns:</p>
+				<ul>
+					<li><code>col</code>: column that auto grows and shrinks.</li>
+					<li><code>col-fit</code>: column that just fit its content. You could set <code>width</code> for this kind of column.</li>
+					<li><code>col-*[0,24]</code>: column with fixed width in percentage.</li>
+				</ul>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -88,6 +94,17 @@
 							</div>
 							<div class="col-fit">
 								<div class="block--green">col-fit</div>
+							</div>
+						</div>
+						<div class="row basic-row">
+							<div class="col-fit">
+								<div class="block--blue" style="width: 300px">col-fit with 300px width</div>
+							</div>
+							<div class="col-fit">
+								<div class="block--green">col-fit</div>
+							</div>
+							<div class="col">
+								<div class="block--blue">col</div>
 							</div>
 						</div>
 						<div class="row basic-row">
@@ -114,49 +131,61 @@
 					</div>
 					<div class="row">
 						<div class="col-24 col-sm-12">
-							<pre class="demo__code"><code class="html">&lt;div class="row basic-row"&gt;
+							<pre class="demo__code"><code class="html">
+&lt;div class="row basic-row"&gt;
   &lt;div class="col"&gt;
-    &lt;div class="block--blue"&gt;col&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="col"&gt;
-    &lt;div class="block--green"&gt;col&lt;/div&gt;
-  &lt;/div&gt;
+		&lt;div class="block--blue"&gt;col&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col"&gt;
+		&lt;div class="block--green"&gt;col&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row basic-row"&gt;
   &lt;div class="col-fit"&gt;
     &lt;div class="block--blue"&gt;col-fit&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col-fit"&gt;
-    &lt;div class="block--green"&gt;col-fit&lt;/div&gt;
-  &lt;/div&gt;
+	&lt;div class="col-fit"&gt;
+		&lt;div class="block--green"&gt;col-fit&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row basic-row"&gt;
-  &lt;div class="col-12"&gt;
-    &lt;div class="block--blue"&gt;col-12&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="col-12"&gt;
-    &lt;div class="block--green"&gt;col-12&lt;/div&gt;
-  &lt;/div&gt;
+	&lt;div class="col-fit"&gt;
+		&lt;div class="block--blue" style="width: 300px"&gt;col-fit with 300px width&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col-fit"&gt;
+		&lt;div class="block--green"&gt;col-fit&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col"&gt;
+		&lt;div class="block--blue"&gt;col&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row basic-row"&gt;
-  &lt;div class="col-12 col-offset-6"&gt;
-    &lt;div class="block--blue"&gt;col-12 col-offset-6&lt;/div&gt;
-  &lt;/div&gt;
+	&lt;div class="col-12"&gt;
+		&lt;div class="block--blue"&gt;col-12&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col-12"&gt;
+		&lt;div class="block--green"&gt;col-12&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row basic-row"&gt;
-  &lt;div class="col-12 col-push-12"&gt;
-    &lt;div class="block--blue"&gt;col-12 col-push-12&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="col-12 col-pull-12"&gt;
-    &lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
-  &lt;/div&gt;
+	&lt;div class="col-12 col-offset-6"&gt;
+		&lt;div class="block--blue"&gt;col-12 col-offset-6&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+	&lt;div class="col-12 col-push-12"&gt;
+		&lt;div class="block--blue"&gt;col-12 col-push-12&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col-12 col-pull-12"&gt;
+		&lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
 							</code></pre>
 						</div>
 						<div class="col-24 col-sm-12 desc">
-							<p><code>col</code> must be the direct child of <code>row</code>. We recommend that seperate layout from your content, so be careful if you modify positioning style on <code>row</code> and <code>col</code> directly.</p>
+							<p><code>col</code> must be the direct child of <code>row</code>. We recommend that seperate layout from your content, so be careful if you change layout style on <code>row</code> and <code>col</code> directly.</p>
 							<p><code>col</code> will take up <code>row</code> space and make it equally distributed. Here flexbox's automatic caculation for layout makes the magic. In the above example, <code>col</code> will make the column equal on width. The columns will automatically adjust their size equally when adding or removing column into the row as well as you resize the window.</p>
-							<p><code>col-fit</code> could make the column fit the content precisely, which will not take any extra space.
+							<p><code>col-fit</code> could make the column fit the content precisely, which will not take any extra space. You could add a <code>width</code> to <code>col-fit</code> such that it will take up fixed-width space.</p>
 							<p>Of cousrse you could use <code>col-*</code> if the layout is known and unchanged.</p>
 							<p><code>col-offset-*</code> are for column offset to the left. When using <code>col-offset-*</code>, you must not set <code>margin</code> in CSS, since they are implemented with <code>margin</code> and will be overwritted.</p>
 							<p><code>col-push-*</code> and <code>col-pull-*</code> are used to set your column's position relative to its original default position.</p>

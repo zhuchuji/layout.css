@@ -71,7 +71,7 @@ a {
   background-color: $header-bg-color;
   transition: max-height 0.4s cubic-bezier(0.4, 0, 0, 1);
 
-  @include response('sm') {
+  @include respondTo('sm') {
     position: relative;
     max-height: 100%;
   }

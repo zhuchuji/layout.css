@@ -14,7 +14,27 @@ Import it in your `index.js`.
 import 'zhuchuji/layout.css';
 ```
 
+### Development
+
+```bash
+# Clone the repository
+git clone https://github.com/zhuchuji/layout.css.git
+
+# Install dependencies
+npm install
+
+# Serve for development: localhost:9000
+npm run serve
+
+# Build production
+npm run build
+
+# Build docs
+npm run docs
+```
+
 ### Browser Compatibility
+Chrome, Firefox, Safari, IE10+, Edge
 
 ### Changelog
 
