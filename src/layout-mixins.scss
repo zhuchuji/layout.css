@@ -195,3 +195,15 @@
     }
   }
 }
+
+@mixin make-margin-padding () {
+  @each $layout-type in "m", "p" {
+    @each $direction in "a", "x", "y", "t", "b", "l", "r" {
+      @each $value in "1", "2", "4", "5", "8", "10", "15", "20", "25", "30", "40", "50" {
+        .#{$layout-type}#{$direction}-#{$value} {
+          margin: $value;
+        }
+      }
+    }
+  }
+}
