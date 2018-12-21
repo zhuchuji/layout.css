@@ -5,6 +5,7 @@
  */
 
 @import "./layout-vars.scss";
+@import "./custom-vars.scss";
 
 // media query
 @mixin respondTo ($media-label, $media-specs: $grid-specs) {
@@ -112,13 +113,17 @@
 
   @for $i from 1 through $col-num {
     &-#{$i} {
-      flex: 0 0 $i / $col-num * 100%;
+      flex: 0 0 $i / ($col-num) * 100%;
       box-sizing: border-box;
       max-width: 100%;
       overflow: auto;
     }
     &-offset-#{$i} {
-      margin-left: $i / $col-num * 100%;
+      margin-left: $i / ($col-num) * 100%;
+    }
+    html[lang="ar"] &-offset-#{$i} {
+      margin-left: 0;
+      margin-right: $i / ($col-num) * 100%;
     }
     // &-push-#{$i} {
     //   position: relative;
@@ -154,13 +159,17 @@
 
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
-          flex: 0 0 $i / $col-num * 100%;
+          flex: 0 0 $i / ($col-num) * 100%;
           box-sizing: border-box;
           max-width: 100%;
           overflow: auto;
         }
         &-offset-#{$label}-#{$i} {
-          margin-left: $i / $col-num * 100%;
+          margin-left: $i / ($col-num) * 100%;
+        }
+        html[lang="ar"] &-offset-#{$label}-#{$i} {
+          margin-left: 0;
+          margin-right: $i / ($col-num) * 100%;
         }
         // &-push-#{$label}-#{$i} {
         //   position: relative;
