@@ -196,13 +196,58 @@
   }
 }
 
-@mixin make-margin-padding () {
-  @each $layout-type in "m", "p" {
-    @each $direction in "a", "x", "y", "t", "b", "l", "r" {
-      @each $value in "1", "2", "3", "4", "5", "6", "8", "10", "12", "14", "15", "16", "18", "20", "25", "30", "40", "50" {
-        .#{$layout-type}#{$direction}-#{$value} {
-          margin: $value;
-        }
+@mixin make-margin-padding {
+  .m {
+    @each $value in "1", "2", "3", "4", "5", "6", "8", "10", "12", "14", "15", "16", "18", "20", "25", "30", "40", "50" {
+      &a-#{$value} {
+        margin: #{$value}px;
+      }
+      &x-#{$value} {
+        margin-left: #{$value}px;
+        margin-right: #{$value}px;
+      }
+      &y-#{$value} {
+        margin-top: #{$value}px;
+        margin-bottom: #{$value}px;
+      }
+      &t-#{$value} {
+        margin-top: #{$value}px;
+      }
+      &b-#{$value} {
+        margin-bottom: #{$value}px;
+      }
+      &b-#{$value} {
+        margin-bottom: #{$value}px;
+      }
+      &r-#{$value} {
+        margin-right: #{$value}px;
+      }
+    }
+  }
+  .p {
+    @each $value in "1", "2", "3", "4", "5", "6", "8", "10", "12", "14", "15", "16", "18", "20", "25", "30", "40", "50" {
+      &a-#{$value} {
+        padding: #{$value}px;
+      }
+      &x-#{$value} {
+        padding-left: #{$value}px;
+        padding-right: #{$value}px;
+      }
+      &y-#{$value} {
+        padding-top: #{$value}px;
+        padding-bottom: #{$value}px;
+      }
+      &t-#{$value} {
+        padding-top: #{$value}px;
+      }
+      &b-#{$value} {
+        padding-bottom: #{$value}px;
+      }
+      &b-#{$value} {
+        padding-bottom: #{$value}px;
+      }
+      &r-#{$value} {
+        padding-right: #{$value}px;
       }
     }
   }
