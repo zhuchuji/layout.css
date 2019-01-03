@@ -45,3 +45,5 @@ $hidden-specs: (
   "lg-and-up": (min-width: $lg),
   "xl-only": (min-width: $xl)
 ) !default;
+
+$space-values: 1 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50;

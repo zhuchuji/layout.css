@@ -94,8 +94,8 @@
 @mixin make-col () {
   flex: 1 1 0;
   box-sizing: border-box;
-  max-width: 100%;
-  overflow: auto;
+  // max-width: 100%;
+  // overflow: auto;
 
   // column auto-fit content
   &-fit {
@@ -108,15 +108,15 @@
   &-0 {
     flex: 0 0 0;
     box-sizing: border-box;
-    overflow: hidden;
+    // overflow: hidden;
   }
 
   @for $i from 1 through $col-num {
     &-#{$i} {
       flex: 0 0 $i / ($col-num) * 100%;
       box-sizing: border-box;
-      max-width: 100%;
-      overflow: auto;
+      // max-width: 100%;
+      // overflow: auto;
     }
     &-offset-#{$i} {
       margin-left: $i / ($col-num) * 100%;
@@ -141,28 +141,28 @@
       &-#{$label} {
         flex: 1 1 0;
         box-sizing: border-box;
-        max-width: 100%;
-        overflow: auto;
+        // max-width: 100%;
+        // overflow: auto;
       }
 
       &-#{$label}-fit {
         flex: 0 0 auto;
         box-sizing: border-box;
-        max-width: none;
+        // max-width: none;
       }
 
       &-#{$label}-0 {
         flex: 0 0 0;
         box-sizing: border-box;
-        overflow: hidden;
+        // overflow: hidden;
       }
 
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
           flex: 0 0 $i / ($col-num) * 100%;
           box-sizing: border-box;
-          max-width: 100%;
-          overflow: auto;
+          // max-width: 100%;
+          // overflow: auto;
         }
         &-offset-#{$label}-#{$i} {
           margin-left: $i / ($col-num) * 100%;
@@ -185,12 +185,14 @@
 }
 
 @mixin make-hidden () {
-  display: none;
+  .hidden {
+    display: none;
 
-  @each $label, $media in $hidden-specs {
-    @include respondTo($label, $hidden-specs) {
-      &-#{$label} {
-        display: none;
+    @each $label, $media in $hidden-specs {
+      @include respondTo($label, $hidden-specs) {
+        &-#{$label} {
+          display: none;
+        }
       }
     }
   }
@@ -198,7 +200,7 @@
 
 @mixin make-margin-padding {
   .m {
-    @each $value in "1", "2", "3", "4", "5", "6", "8", "10", "12", "14", "15", "16", "18", "20", "25", "30", "40", "50" {
+    @each $value in $space-values {
       &a-#{$value} {
         margin: #{$value}px;
       }
@@ -225,7 +227,7 @@
     }
   }
   .p {
-    @each $value in "1", "2", "3", "4", "5", "6", "8", "10", "12", "14", "15", "16", "18", "20", "25", "30", "40", "50" {
+    @each $value in $space-values {
       &a-#{$value} {
         padding: #{$value}px;
       }

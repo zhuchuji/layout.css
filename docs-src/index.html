@@ -442,9 +442,73 @@
 					<li><code>row--align-center</code>: align content at the center</li>
 					<li><code>row--align-end</code>: align content at the end</li>
 				</ul>
-				<h3>Hidden</h3>
-				<p>Classes for hidding content</p>
+
+				<h3>Spacing</h3>
+				<p>We also provide spacing classes for slight adjustment, including margin and padding. We find them helpful thought it's easy to implement. These classes will be applied in the format `${property}${direction}-${value}`.</p>
+				<p>`property` types:</p>
 				<ul>
+					<li>`m`: margin</li>
+					<li>`p`: padding</li>
+				</ul>
+				<p>`direction` types:</p>
+				<ul>
+					<li>`a`: all</li>
+					<li>`x`: left and right</li>
+					<li>`y`: top and bottom</li>
+					<li>`t`: top</li>
+					<li>`b`: bottom</li>
+					<li>`l`: left</li>
+					<li>`r`: right</li>
+				</ul>
+				<p>values: 1 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50.</p>
+				<div class="demo">
+						<div class="demo__view">
+							<div class="row basic-row">
+								<div class="col-8 ma-10">
+									<div class="block--blue">col-8 ma-20</div>
+								</div>
+								<div class="col-8 ma-10">
+									<div class="block--blue">col-8 ma-20</div>
+								</div>
+							</div>
+							<div class="row basic-row">
+								<div class="col-8 px-20">
+									<div class="block--blue">col-8 px-20</div>
+								</div>
+								<div class="col-8 px-20">
+									<div class="block--blue">col-8 px-20</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-24 col-sm-12">
+								<pre class="demo__code"><code>&lt;div class="row basic-row"&gt;
+	&lt;div class="col-8 ma-10"&gt;
+		&lt;div class="block--blue"&gt;col-8 ma-10&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col-8 ma-10"&gt;
+		&lt;div class="block--blue"&gt;col-8 ma-10&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row basic-row"&gt;
+	&lt;div class="col-8 px-10"&gt;
+		&lt;div class="block--blue"&gt;col-8 px-10&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="col-8 px-10"&gt;
+		&lt;div class="block--blue"&gt;col-8 px-10&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+							</div>
+							<div class="col-24 col-sm-12 desc">
+								<p>`ma-10` will apply `margin: 10px` for the content while `px-10` will apply `padding-left: 10px` and `padding-right: 10px`.</p>
+							</div>
+						</div>
+					</div>
+
+				<h3>Hidden</h3>
+				<p>Classes for hidding content. `Hidden` will hide the content for all devices and `hidden-xxx` will hide the content when media query meets the viewport demension.</p>
+				<ul>
+					<li>hidden</li>
 					<li>hidden-xs-only</li>
 					<li>hidden-sm-only</li>
 					<li>hidden-sm-and-down</li>
@@ -457,6 +521,7 @@
 					<li>hidden-lg-and-up</li>
 					<li>hidden-xl-only</li>
 				</ul>
+
 				<h3>Browser Compatibility</h3>
 				<p>Chrome, Firefox, Safari, IE10+, Edge</p>
 			</div>
