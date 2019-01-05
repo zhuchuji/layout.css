@@ -71,11 +71,11 @@
 					</table>
 				</div>
 				<h3>Grids</h3>
-				<p>We build up a 24-column system with flexbox. Flexbox make the grids flexible and magical. <code>row</code> and <code>col</code> are the basic components in the grid system.</p>
+				<p>We build up a 24-column system with flexbox, which makes the grids flexible and magical. In the grid system <code>row</code> and <code>col</code> are the basic components in the grid system.</p>
 				<p>We provide three kinds of columns:</p>
 				<ul>
 					<li><code>col</code>: column that auto grows and shrinks.</li>
-					<li><code>col-fit</code>: column that just fit its content. You could set <code>width</code> for this kind of column.</li>
+					<li><code>col-fit</code>: column that just fit its content without growing and shrinking. You could set <code>width</code> for such kind of column.</li>
 					<li><code>col-*[0,24]</code>: column with fixed width in percentage.</li>
 				</ul>
 				<div class="demo">
@@ -97,8 +97,8 @@
 							</div>
 						</div>
 						<div class="row basic-row">
-							<div class="col-fit">
-								<div class="block--blue" style="width: 300px">col-fit with 300px width</div>
+							<div class="col-fit" style="width: 300px">
+								<div class="block--blue">col-fit with 300px width</div>
 							</div>
 							<div class="col-fit">
 								<div class="block--green">col-fit</div>
@@ -118,14 +118,6 @@
 						<div class="row basic-row">
 							<div class="col-12 col-offset-6">
 								<div class="block--blue">col-12 col-offset-6</div>
-							</div>
-						</div>
-						<div class="row basic-row">
-							<div class="col-12 col-push-12">
-								<div class="block--blue">col-12 col-push-12</div>
-							</div>
-							<div class="col-12 col-pull-12">
-								<div class="block--green">col-12 col-pull-12</div>
 							</div>
 						</div>
 					</div>
@@ -171,16 +163,7 @@
 	&lt;div class="col-12 col-offset-6"&gt;
 		&lt;div class="block--blue"&gt;col-12 col-offset-6&lt;/div&gt;
 	&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="row basic-row"&gt;
-	&lt;div class="col-12 col-push-12"&gt;
-		&lt;div class="block--blue"&gt;col-12 col-push-12&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class="col-12 col-pull-12"&gt;
-		&lt;div class="block--green"&gt;col-12 col-pull-12&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/div&gt;
-							</code></pre>
+&lt;/div&gt;</code></pre>
 						</div>
 						<div class="col-24 col-sm-12 desc">
 							<p><code>col</code> must be the direct child of <code>row</code>. We recommend that seperate layout from your content, so be careful if you change layout style on <code>row</code> and <code>col</code> directly.</p>
@@ -188,7 +171,6 @@
 							<p><code>col-fit</code> could make the column fit the content precisely, which will not take any extra space. You could add a <code>width</code> to <code>col-fit</code> such that it will take up fixed-width space.</p>
 							<p>Of cousrse you could use <code>col-*</code> if the layout is known and unchanged.</p>
 							<p><code>col-offset-*</code> are for column offset to the left. When using <code>col-offset-*</code>, you must not set <code>margin</code> in CSS, since they are implemented with <code>margin</code> and will be overwritted.</p>
-							<p><code>col-push-*</code> and <code>col-pull-*</code> are used to set your column's position relative to its original default position.</p>
 						</div>
 					</div>
 				</div>
@@ -235,7 +217,7 @@
 							</code></pre>
 						</div>
 						<div class="col-24 col-sm-12 desc">
-							<p>To add gutter between columns, you should add customed classes with <code>margin</code> or <code>padding</code> on column rather than modifying directly on predefined classes <code>col-*</code>. Otherwise, it will affect all columns on your website and which completely is not what you want.</p>
+							<p>To add gutter between columns, you should add customed classes with <code>margin</code> or <code>padding</code> on column rather than modifying directly on predefined classes <code>col-*</code>. Otherwise, it will affect all columns on your website and which is completely not what you want.</p>
 						</div>
 					</div>
 				</div>
@@ -270,7 +252,7 @@
 						</tbody>
 					</table>
 				</div>
-				<p><code>col</code> and <code>col-*</code> are used for mobile layout by default. <code>col-sm</code> and <code>col-sm-*</code> are used for small device layout. <code>col-md</code> and <code>col-md-*</code> are used for medium device layout. <code>col-lg</code> and <code>col-lg-*</code> are used for large device layout and <code>col-xl</code> and <code>col-xl-*</code> are used for extra large device layout. Besides, <code>col-offset-*</code>, <code>col-offset-sm-*</code>, <code>col-offset-md-*</code>, <code>col-offset-lg-*</code>, and <code>col-offset-xl-*</code> are provided as well as <code>col-push-*</code>, <code>col-pull-*</code>, <code>col</code></p>
+				<p><code>col</code> and <code>col-*</code> are used for mobile layout by default. <code>col-sm</code> and <code>col-sm-*</code> are used for small device layout. <code>col-md</code> and <code>col-md-*</code> are used for medium device layout. <code>col-lg</code> and <code>col-lg-*</code> are used for large device layout and <code>col-xl</code> and <code>col-xl-*</code> are used for extra large device layout. Besides, <code>col-offset-*</code>, <code>col-offset-sm-*</code>, <code>col-offset-md-*</code>, <code>col-offset-lg-*</code>, and <code>col-offset-xl-*</code> are convinient.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="row basic-row">
@@ -295,7 +277,7 @@
 						</div>
 					</div>
 				</div>
-				<h3>Nested Grid</h3>
+				<h3>Nested Layout</h3>
 				<p>Nested layout is also another basic usage in web development. You could nest <code>row</code> and <code>col</code> to any level deep, but be awera that do not nested <code>containers</code>.</p>
 				<div class="demo">
 					<div class="demo__view">
@@ -460,7 +442,7 @@
 					<li>`l`: left</li>
 					<li>`r`: right</li>
 				</ul>
-				<p>values: 1 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50.</p>
+				<p>`values`: 1 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50.</p>
 				<div class="demo">
 						<div class="demo__view">
 							<div class="row basic-row">
@@ -483,20 +465,20 @@
 						<div class="row">
 							<div class="col-24 col-sm-12">
 								<pre class="demo__code"><code>&lt;div class="row basic-row"&gt;
-	&lt;div class="col-8 ma-10"&gt;
-		&lt;div class="block--blue"&gt;col-8 ma-10&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class="col-8 ma-10"&gt;
-		&lt;div class="block--blue"&gt;col-8 ma-10&lt;/div&gt;
-	&lt;/div&gt;
+  &lt;div class="col-8 ma-10"&gt;
+    &lt;div class="block--blue"&gt;col-8 ma-10&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-8 ma-10"&gt;
+    &lt;div class="block--blue"&gt;col-8 ma-10&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="row basic-row"&gt;
-	&lt;div class="col-8 px-10"&gt;
-		&lt;div class="block--blue"&gt;col-8 px-10&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;div class="col-8 px-10"&gt;
-		&lt;div class="block--blue"&gt;col-8 px-10&lt;/div&gt;
-	&lt;/div&gt;
+  &lt;div class="col-8 px-10"&gt;
+    &lt;div class="block--blue"&gt;col-8 px-10&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="col-8 px-10"&gt;
+    &lt;div class="block--blue"&gt;col-8 px-10&lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 							</div>
 							<div class="col-24 col-sm-12 desc">
@@ -506,7 +488,7 @@
 					</div>
 
 				<h3>Hidden</h3>
-				<p>Classes for hidding content. `Hidden` will hide the content for all devices and `hidden-xxx` will hide the content when media query meets the viewport demension.</p>
+				<p>Classes for hidding content. `Hidden` will hide the content for all devices and `hidden-xxx` will hide the content when media query meets the viewport dimension.</p>
 				<ul>
 					<li>hidden</li>
 					<li>hidden-xs-only</li>
@@ -521,6 +503,9 @@
 					<li>hidden-lg-and-up</li>
 					<li>hidden-xl-only</li>
 				</ul>
+
+				<h3>Symmetric Layout For Arabic Websites</h3>
+				<p>For Arabic websites, flexbox will reverse the layout and content symetrically. We also reset asymmetric layout class e.g. <code>col-offset-*</code> and <code>col-*-offset-*</code> such that the layout do not break. But you have to set <code>lang="ar"</code> to <code>html</code>.</p>
 
 				<h3>Browser Compatibility</h3>
 				<p>Chrome, Firefox, Safari, IE10+, Edge</p>

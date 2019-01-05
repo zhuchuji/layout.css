@@ -15,7 +15,6 @@
 }
 
 @mixin make-container () {
-  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   @if $container-padding > 0 {
@@ -36,7 +35,6 @@
 @mixin make-row () {
   display: flex;
   flex-wrap: wrap;
-  box-sizing: border-box;
 
   // flex-direction modifier
   @each $modifier in "vertical" {
@@ -53,8 +51,10 @@
   }
 
   // justify-content modifier
-  @each $modifier in "center", "end", "space-between", "space-evenly" {
-    @if $modifier == 'center' {
+  @each $modifier in "start", "center", "end", "space-between", "space-evenly" {
+    @if $modifier == 'start' {
+      justify-content: flex-start;
+    } @else if $modifier == 'center' {
       &--justify-#{$modifier} {
         justify-content: center;
       }
@@ -93,30 +93,18 @@
 
 @mixin make-col () {
   flex: 1 1 0;
-  box-sizing: border-box;
-  // max-width: 100%;
-  // overflow: auto;
+  max-width: 100%;
 
   // column auto-fit content
   &-fit {
     flex: 0 0 auto;
-    box-sizing: border-box;
-    max-width: none;
-  }
-
-  // default mobile columns
-  &-0 {
-    flex: 0 0 0;
-    box-sizing: border-box;
-    // overflow: hidden;
+    max-width: 100%;
   }
 
   @for $i from 1 through $col-num {
     &-#{$i} {
       flex: 0 0 $i / ($col-num) * 100%;
-      box-sizing: border-box;
-      // max-width: 100%;
-      // overflow: auto;
+      max-width: $i / ($col-num) * 100%;
     }
     &-offset-#{$i} {
       margin-left: $i / ($col-num) * 100%;
@@ -125,14 +113,6 @@
       margin-left: 0;
       margin-right: $i / ($col-num) * 100%;
     }
-    // &-push-#{$i} {
-    //   position: relative;
-    //   left: $i / $col-num * 100%;
-    // }
-    // &-pull-#{$i} {
-    //   position: relative;
-    //   right: $i / $col-num * 100%;
-    // }
   }
 
   // responsive columns
@@ -140,29 +120,18 @@
     @include respondTo ($label) {
       &-#{$label} {
         flex: 1 1 0;
-        box-sizing: border-box;
-        // max-width: 100%;
-        // overflow: auto;
+        max-width: 100%;
       }
 
       &-#{$label}-fit {
         flex: 0 0 auto;
-        box-sizing: border-box;
-        // max-width: none;
-      }
-
-      &-#{$label}-0 {
-        flex: 0 0 0;
-        box-sizing: border-box;
-        // overflow: hidden;
+        max-width: 100%;
       }
 
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
           flex: 0 0 $i / ($col-num) * 100%;
-          box-sizing: border-box;
-          // max-width: 100%;
-          // overflow: auto;
+          max-width: $i / ($col-num) * 100%;
         }
         &-offset-#{$label}-#{$i} {
           margin-left: $i / ($col-num) * 100%;
@@ -171,14 +140,6 @@
           margin-left: 0;
           margin-right: $i / ($col-num) * 100%;
         }
-        // &-push-#{$label}-#{$i} {
-        //   position: relative;
-        //   left: $i / $col-num * 100%;
-        // }
-        // &-pull-#{$label}-#{$i} {
-        //   position: relative;
-        //   right: $i / $col-num * 100%;
-        // }
       }
     }
   }
