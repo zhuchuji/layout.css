@@ -1,13 +1,12 @@
 /*
- * @file _layout-mixins.scss
+ * @file layout-mixins.scss
  * @author Chockie Zhu
  * @desc Sass mixins for layout
  */
-
 @import "./layout-vars.scss";
 
 // media query
-@mixin response ($media-label, $media-specs: $grid-specs) {
+@mixin respondTo ($media-label, $media-specs: $grid-specs) {
   @if map-has-key($media-specs, $media-label) {
     @media #{map-get($media-specs, $media-label)} {
       @content;
@@ -16,17 +15,18 @@
 }
 
 @mixin make-container () {
-  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $container-padding;
-  padding-right: $container-padding;
+  @if $container-padding > 0 {
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+  }
   width: 100%;
 }
 
 @mixin set-container-max-width () {
   @each $media-label, $max-width in $container-max-width-specs {
-    @include response($media-label) {
+    @include respondTo($media-label) {
       max-width: $max-width;
     }
   }
@@ -35,7 +35,6 @@
 @mixin make-row () {
   display: flex;
   flex-wrap: wrap;
-  box-sizing: border-box;
 
   // flex-direction modifier
   @each $modifier in "vertical" {
@@ -52,8 +51,10 @@
   }
 
   // justify-content modifier
-  @each $modifier in "center", "end", "space-between", "space-evenly" {
-    @if $modifier == 'center' {
+  @each $modifier in "start", "center", "end", "space-between", "space-evenly" {
+    @if $modifier == 'start' {
+      justify-content: flex-start;
+    } @else if $modifier == 'center' {
       &--justify-#{$modifier} {
         justify-content: center;
       }
@@ -92,83 +93,52 @@
 
 @mixin make-col () {
   flex: 1 1 0;
-  box-sizing: border-box;
   max-width: 100%;
-  overflow: auto;
 
   // column auto-fit content
   &-fit {
     flex: 0 0 auto;
-    box-sizing: border-box;
-    max-width: none;
-  }
-
-  // default mobile columns
-  &-0 {
-    flex: 0 0 0;
-    box-sizing: border-box;
-    overflow: hidden;
+    max-width: 100%;
   }
 
   @for $i from 1 through $col-num {
     &-#{$i} {
-      flex: 0 0 $i / $col-num * 100%;
-      box-sizing: border-box;
-      max-width: 100%;
-      overflow: auto;
+      flex: 0 0 $i / ($col-num) * 100%;
+      max-width: $i / ($col-num) * 100%;
     }
     &-offset-#{$i} {
-      margin-left: $i / $col-num * 100%;
+      margin-left: $i / ($col-num) * 100%;
     }
-    &-push-#{$i} {
-      position: relative;
-      left: $i / $col-num * 100%;
-    }
-    &-pull-#{$i} {
-      position: relative;
-      right: $i / $col-num * 100%;
+    html[lang="ar"] &-offset-#{$i} {
+      margin-left: 0;
+      margin-right: $i / ($col-num) * 100%;
     }
   }
 
   // responsive columns
   @each $label, $media in $grid-specs {
-    @include response ($label) {
+    @include respondTo ($label) {
       &-#{$label} {
         flex: 1 1 0;
-        box-sizing: border-box;
         max-width: 100%;
-        overflow: auto;
       }
 
       &-#{$label}-fit {
         flex: 0 0 auto;
-        box-sizing: border-box;
-        max-width: none;
-      }
-
-      &-#{$label}-0 {
-        flex: 0 0 0;
-        box-sizing: border-box;
-        overflow: hidden;
+        max-width: 100%;
       }
 
       @for $i from 1 through $col-num {
         &-#{$label}-#{$i} {
-          flex: 0 0 $i / $col-num * 100%;
-          box-sizing: border-box;
-          max-width: 100%;
-          overflow: auto;
+          flex: 0 0 $i / ($col-num) * 100%;
+          max-width: $i / ($col-num) * 100%;
         }
         &-offset-#{$label}-#{$i} {
-          margin-left: $i / $col-num * 100%;
+          margin-left: $i / ($col-num) * 100%;
         }
-        &-push-#{$label}-#{$i} {
-          position: relative;
-          left: $i / $col-num * 100%;
-        }
-        &-pull-#{$label}-#{$i} {
-          position: relative;
-          right: $i / $col-num * 100%;
+        html[lang="ar"] &-offset-#{$label}-#{$i} {
+          margin-left: 0;
+          margin-right: $i / ($col-num) * 100%;
         }
       }
     }
@@ -176,12 +146,71 @@
 }
 
 @mixin make-hidden () {
-  display: none;
+  .hidden {
+    display: none;
 
-  @each $label, $media in $hidden-specs {
-    @include response($label, $hidden-specs) {
-      &-#{$label} {
-        display: none;
+    @each $label, $media in $hidden-specs {
+      @include respondTo($label, $hidden-specs) {
+        &-#{$label} {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@mixin make-margin-padding {
+  .m {
+    @each $value in $space-values {
+      &a-#{$value} {
+        margin: #{$value}px;
+      }
+      &x-#{$value} {
+        margin-left: #{$value}px;
+        margin-right: #{$value}px;
+      }
+      &y-#{$value} {
+        margin-top: #{$value}px;
+        margin-bottom: #{$value}px;
+      }
+      &t-#{$value} {
+        margin-top: #{$value}px;
+      }
+      &b-#{$value} {
+        margin-bottom: #{$value}px;
+      }
+      &b-#{$value} {
+        margin-bottom: #{$value}px;
+      }
+      &r-#{$value} {
+        margin-right: #{$value}px;
+      }
+    }
+  }
+  .p {
+    @each $value in $space-values {
+      &a-#{$value} {
+        padding: #{$value}px;
+      }
+      &x-#{$value} {
+        padding-left: #{$value}px;
+        padding-right: #{$value}px;
+      }
+      &y-#{$value} {
+        padding-top: #{$value}px;
+        padding-bottom: #{$value}px;
+      }
+      &t-#{$value} {
+        padding-top: #{$value}px;
+      }
+      &b-#{$value} {
+        padding-bottom: #{$value}px;
+      }
+      &b-#{$value} {
+        padding-bottom: #{$value}px;
+      }
+      &r-#{$value} {
+        padding-right: #{$value}px;
       }
     }
   }

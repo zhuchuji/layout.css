@@ -24,6 +24,6 @@
 	@include make-col();
 }
 
-.hidden {
-	@include make-hidden();
-}
+@include make-hidden();
+
+@include make-margin-padding();
