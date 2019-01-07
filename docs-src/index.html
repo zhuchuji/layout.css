@@ -71,7 +71,7 @@
 					</table>
 				</div>
 				<h3>Grids</h3>
-				<p>We build up a 24-column system with flexbox, which makes the grids flexible and magical. In the grid system <code>row</code> and <code>col</code> are the basic components in the grid system.</p>
+				<p>We build up a 24-column system with flexbox, which makes the grids flexible and magical. In the grid system <code>row</code> and <code>col</code> are the basic components in the grid system. By default, the <code>row</code> justify columns at the start at horizontal direction and wrap columns to newline if overflow.</p>
 				<p>We provide three kinds of columns:</p>
 				<ul>
 					<li><code>col</code>: column that auto grows and shrinks.</li>
@@ -414,15 +414,18 @@
 				<h3>Justifying And Alignment</h3>
 				<p>We provide useful classes for justifying and alignment.</p>
 				<ul>
+					<li><code>row--horizontal</code>: set the direction to horizontal</li>
 					<li><code>row--vertical</code>: change the direction to vertical</li>
-					<li><code>row--no-wrap</code>: unwrap the column when overflowing</li>
-					<li><code>row--justify-center</code>: justify the content at the center of the row</li>
-					<li><code>row--justify-end</code>: justify the content at the end of the row</li>
-					<li><code>row--justify-space-between</code>: justify the content with space-between</li>
-					<li><code>row--justify-space-evenly</code>: justify the content with space-evenly</li>
-					<li><code>row--align-start</code>: align the content at flex start</li>
-					<li><code>row--align-center</code>: align content at the center</li>
-					<li><code>row--align-end</code>: align content at the end</li>
+					<li><code>row--wrap</code>: wrap the columns when overflowing</li>
+					<li><code>row--no-wrap</code>: unwrap the columns when overflowing</li>
+					<li><code>row--justify-start</code>: justify columns at the start of the row</li>
+					<li><code>row--justify-center</code>: justify columns at the center of the row</li>
+					<li><code>row--justify-end</code>: justify columns at the end of the row</li>
+					<li><code>row--justify-between</code>: justify columns with space-between</li>
+					<li><code>row--justify-around</code>: justify columns with space-around</li>
+					<li><code>row--align-start</code>: align columns at flex start</li>
+					<li><code>row--align-center</code>: align columns at the center</li>
+					<li><code>row--align-end</code>: align columns at the end</li>
 				</ul>
 
 				<h3>Spacing</h3>
@@ -505,7 +508,7 @@
 				</ul>
 
 				<h3>Symmetric Layout For Arabic Websites</h3>
-				<p>For Arabic websites, flexbox will reverse the layout and content symetrically. We also reset asymmetric layout class e.g. <code>col-offset-*</code> and <code>col-*-offset-*</code> such that the layout do not break. But you have to set <code>lang="ar"</code> to <code>html</code>.</p>
+				<p>For Arabic websites, flexbox will reverse the layout and content symetrically. We also reset asymmetric layout class e.g. <code>col-offset-*</code> and <code>col-*-offset-*</code> such that the layout do not break. Make sure you have added <code>lang="ar"</code> to <code>html</code>.</p>
 
 				<h3>Browser Compatibility</h3>
 				<p>Chrome, Firefox, Safari, IE10+, Edge</p>

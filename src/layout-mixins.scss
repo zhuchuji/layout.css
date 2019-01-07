@@ -38,22 +38,30 @@
 
   // flex-direction modifier
   @each $modifier in "vertical" {
-    &--#{$modifier} {
-      flex-direction: column;
+    @if $modifier == "vertical" {
+      &--#{$modifier} {
+        flex-direction: column;
+      }
+    } @else if $modifier == "horizontal" {
+      &--#{$modifier} {
+        flex-direction: row;
+      }
     }
   }
 
   // flex-wrap modifier
-  @each $modifier in "no-wrap" {
+  @each $modifier in "wrap", "no-wrap" {
     &--#{$modifier} {
-      flex-wrap: no-wrap;
+      flex-wrap: $modifier;
     }
   }
 
   // justify-content modifier
-  @each $modifier in "start", "center", "end", "space-between", "space-evenly" {
+  @each $modifier in "start", "center", "end", "between", "around" {
     @if $modifier == 'start' {
-      justify-content: flex-start;
+      &--justify-#{$modifier} {
+        justify-content: flex-start;
+      }
     } @else if $modifier == 'center' {
       &--justify-#{$modifier} {
         justify-content: center;
@@ -66,9 +74,9 @@
       &--justify-#{$modifier} {
         justify-content: space-between;
       }
-    } @else if $modifier == 'space-evenly' {
+    } @else if $modifier == 'around' {
       &--justify-#{$modifier} {
-        justify-content: space-evenly;
+        justify-content: 'space-around';
       }
     }
   }
