@@ -157,9 +157,9 @@
   .hidden {
     display: none;
 
-    @each $label, $media in $hidden-specs {
-      @include respondTo($label, $hidden-specs) {
-        &-#{$label} {
+    @each $modifier, $media in $hidden-specs {
+      @include respondTo($modifier, $hidden-specs) {
+        &--#{$modifier} {
           display: none;
         }
       }
@@ -169,6 +169,29 @@
 
 @mixin make-margin-padding {
   .m {
+    &a-auto {
+      margin: auto;
+    }
+    &x-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &y-auto {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    &t-auto {
+      margin-top: auto;
+    }
+    &b-auto {
+      margin-bottom: auto;
+    }
+    &b-auto {
+      margin-bottom: auto;
+    }
+    &r-auto {
+      margin-right: auto;
+    }
     @each $value in $space-values {
       &a-#{$value} {
         margin: #{$value}px;
@@ -196,6 +219,29 @@
     }
   }
   .p {
+    &a-auto {
+      padding: auto;
+    }
+    &x-auto {
+      padding-left: auto;
+      padding-right: auto;
+    }
+    &y-auto {
+      padding-top: auto;
+      padding-bottom: auto;
+    }
+    &t-auto {
+      padding-top: auto;
+    }
+    &b-auto {
+      padding-bottom: auto;
+    }
+    &b-auto {
+      padding-bottom: auto;
+    }
+    &r-auto {
+      padding-right: auto;
+    }
     @each $value in $space-values {
       &a-#{$value} {
         padding: #{$value}px;

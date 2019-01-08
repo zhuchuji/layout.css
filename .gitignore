@@ -4,3 +4,4 @@ dist/
 **/.DS_Store
 docs-src/styles/examples.css
 docs-src/styles/examples.css.map
+src/custom-vars.scss

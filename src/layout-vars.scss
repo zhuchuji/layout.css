@@ -35,14 +35,14 @@ $container-max-width-specs: (
 $hidden-specs: (
   "xs-only": (max-width: $sm - 1px),
   "sm-only": (min-width: $sm) and (max-width: $md - 1px),
-  "sm-and-down": (max-width: $md - 1px),
-  "sm-and-up": (min-width: $sm),
+  "sm-down": (max-width: $md - 1px),
+  "sm-up": (min-width: $sm),
   "md-only": (min-width: $md) and (max-width: $lg - 1px),
-  "md-and-down": (max-width: $lg - 1px),
-  "md-and-up": (min-width: $md),
+  "md-down": (max-width: $lg - 1px),
+  "md-up": (min-width: $md),
   "lg-only": (min-width: $lg) and (max-width: $xl - 1px),
-  "lg-and-down": (max-width: $xl - 1px),
-  "lg-and-up": (min-width: $lg),
+  "lg-down": (max-width: $xl - 1px),
+  "lg-up": (min-width: $lg),
   "xl-only": (min-width: $xl)
 ) !default;
 

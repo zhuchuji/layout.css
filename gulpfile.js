@@ -21,8 +21,9 @@ function compileSass (files, compileOptions) {
 		.pipe(sourcemaps.write('.'))
 }
 
+let compressed = process.env.npm_config_u || true
 gulp.task('build-src', function () {
-	return compileSass(srcSassFiles, {outputStyle: 'compressed'}).pipe(gulp.dest('./dist'))
+	return compileSass(srcSassFiles, {outputStyle: compressed ? 'compressed' : null}).pipe(gulp.dest('./dist'))
 	// return compileSass(srcSassFiles).pipe(gulp.dest('./dist'))
 })
 
