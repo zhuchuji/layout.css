@@ -13,7 +13,7 @@ let srcSassFiles = ['./src/layout.scss']
 let docsSassFiles = ['./docs-src/styles/examples.scss']
 
 function compileSass (files, compileOptions) {
-	compileOptions = compileOptions || {}
+	compileOptions = compileOptions || {};
 	return gulp.src(files)
 		.pipe(sourcemaps.init())
 		.pipe(sass(compileOptions).on('error', sass.logError))
@@ -21,9 +21,9 @@ function compileSass (files, compileOptions) {
 		.pipe(sourcemaps.write('.'))
 }
 
-let compressed = process.env.npm_config_u || true
+let uncompressed = process.env.npm_config_u || true
 gulp.task('build-src', function () {
-	return compileSass(srcSassFiles, {outputStyle: compressed ? 'compressed' : null}).pipe(gulp.dest('./dist'))
+	return compileSass(srcSassFiles, {outputStyle: uncompressed ? false : 'compressed'}).pipe(gulp.dest('./dist'))
 	// return compileSass(srcSassFiles).pipe(gulp.dest('./dist'))
 })
 

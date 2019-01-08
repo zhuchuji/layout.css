@@ -5,16 +5,20 @@
  */
 
 // the column number in the grid system
-$col-num: 24 !default;
+$grid-num: 24 !default;
 
 // media breakpoints
+$xs: 0;
 $sm: 768px !default;
 $md: 992px !default;
 $lg: 1200px !default;
 $xl: 1900px !default;
 
+$min-unit: 1px;
+
 // grid system spec
 $grid-specs: (
+  "xs": (min-width: $xs),
   "sm": (min-width: $sm),
   "md": (min-width: $md),
   "lg": (min-width: $lg),
@@ -33,15 +37,15 @@ $container-max-width-specs: (
 ) !default;
 
 $hidden-specs: (
-  "xs-only": (max-width: $sm - 1px),
-  "sm-only": (min-width: $sm) and (max-width: $md - 1px),
-  "sm-down": (max-width: $md - 1px),
+  "xs-only": (max-width: $sm - $min-unit),
+  "sm-only": (min-width: $sm) and (max-width: $md - $min-unit),
+  "sm-down": (max-width: $md - $min-unit),
   "sm-up": (min-width: $sm),
-  "md-only": (min-width: $md) and (max-width: $lg - 1px),
-  "md-down": (max-width: $lg - 1px),
+  "md-only": (min-width: $md) and (max-width: $lg - $min-unit),
+  "md-down": (max-width: $lg - $min-unit),
   "md-up": (min-width: $md),
-  "lg-only": (min-width: $lg) and (max-width: $xl - 1px),
-  "lg-down": (max-width: $xl - 1px),
+  "lg-only": (min-width: $lg) and (max-width: $xl - $min-unit),
+  "lg-down": (max-width: $xl - $min-unit),
   "lg-up": (min-width: $lg),
   "xl-only": (min-width: $xl)
 ) !default;

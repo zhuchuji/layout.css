@@ -32,121 +32,96 @@
   }
 }
 
-@mixin make-row () {
-  display: flex;
-  flex-wrap: wrap;
-
-  // flex-direction modifier
-  @each $modifier in "vertical" {
-    @if $modifier == "vertical" {
-      &--#{$modifier} {
-        flex-direction: column;
-      }
-    } @else if $modifier == "horizontal" {
-      &--#{$modifier} {
-        flex-direction: row;
-      }
-    }
+@mixin make-grid () {
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  // flex-wrap modifier
-  @each $modifier in "wrap", "no-wrap" {
-    &--#{$modifier} {
-      flex-wrap: $modifier;
-    }
+  .row {
+    flex-direction: row;
   }
 
-  // justify-content modifier
-  @each $modifier in "start", "center", "end", "between", "around" {
-    @if $modifier == 'start' {
-      &--justify-#{$modifier} {
-        justify-content: flex-start;
-      }
-    } @else if $modifier == 'center' {
-      &--justify-#{$modifier} {
-        justify-content: center;
-      }
-    } @else if $modifier == 'end' {
-      &--justify-#{$modifier} {
-        justify-content: flex-end;
-      }
-    } @else if $modifier == 'space-between' {
-      &--justify-#{$modifier} {
-        justify-content: space-between;
-      }
-    } @else if $modifier == 'around' {
-      &--justify-#{$modifier} {
-        justify-content: 'space-around';
-      }
-    }
+  .column {
+    flex-direction: column;
   }
 
-  // align-items modifier
-  @each $modifier in "start", "center", "end" {
-    @if $modifier == "start" {
-      &--align-#{$modifier} {
-        align-items: flex-start;
-      }
-    } @else if $modifier == "center" {
-      &--align-#{$modifier} {
-        align-items: center;
-      }
-    } @else if $modifier == "end" {
-      &--align-#{$modifier} {
-        align-items: flex-end;
-      }
-    }
-  }
-}
-
-@mixin make-col () {
-  flex: 1 1 0;
-  max-width: 100%;
-
-  // column auto-fit content
-  &-fit {
-    flex: 0 0 auto;
-    max-width: 100%;
+  .row.reverse {
+    flex-direction: row-reverse;
   }
 
-  @for $i from 1 through $col-num {
-    &-#{$i} {
-      flex: 0 0 $i / ($col-num) * 100%;
-      max-width: $i / ($col-num) * 100%;
-    }
-    &-offset-#{$i} {
-      margin-left: $i / ($col-num) * 100%;
-    }
-    html[lang="ar"] &-offset-#{$i} {
-      margin-left: 0;
-      margin-right: $i / ($col-num) * 100%;
-    }
+  .column.reverse {
+    flex-direction: column-reverse;
   }
 
-  // responsive columns
+  .wrap {
+    flex-wrap: "wrap";
+  }
+
+  .no-wrap {
+    flex-wrap: "no-wrap";
+  }
+
+  .justify-content-start {
+    justify-content: flex-start;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
+
+  .justify-content-end {
+    justify-content: flex-end;
+  }
+
+  .justify-content-between {
+    justify-content: space-between;
+  }
+
+  .justify-content-around {
+    justify-content: space-around;
+  }
+
+  .align-items-start {
+    align-items: flex-start;
+  }
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .align-items-end {
+    align-items: flex-end;
+  }
+
   @each $label, $media in $grid-specs {
     @include respondTo ($label) {
-      &-#{$label} {
-        flex: 1 1 0;
+      // flex grid
+      .#{$label} {
+        flex: 1 1 auto;
         max-width: 100%;
       }
 
-      &-#{$label}-fit {
+      // auto-fit grid
+      .#{$label}-fit {
         flex: 0 0 auto;
         max-width: 100%;
       }
 
-      @for $i from 1 through $col-num {
-        &-#{$label}-#{$i} {
-          flex: 0 0 $i / ($col-num) * 100%;
-          max-width: $i / ($col-num) * 100%;
+      // fix-length grid in percentage
+      @for $i from 1 through $grid-num {
+        .#{$label}-#{$i} {
+          flex: 0 0 $i / ($grid-num) * 100%;
+          max-width: $i / ($grid-num) * 100%;
         }
-        &-offset-#{$label}-#{$i} {
-          margin-left: $i / ($col-num) * 100%;
+
+        .#{$label}-offset-#{$i} {
+          margin-left: $i / ($grid-num) * 100%;
         }
-        html[lang="ar"] &-offset-#{$label}-#{$i} {
+
+        html[lang="ar"] .#{$label}-offset-#{$i} {
           margin-left: 0;
-          margin-right: $i / ($col-num) * 100%;
+          margin-right: $i / ($grid-num) * 100%;
         }
       }
     }

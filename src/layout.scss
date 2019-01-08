@@ -4,7 +4,7 @@
  * @desc Responsive grid system
  */
 
-@import "./custom-vars.scss";
+// @import "./custom-vars.scss";
 @import "./layout-vars.scss";
 @import "./layout-mixins.scss";
 
@@ -17,13 +17,7 @@
   @include make-container();
 }
 
-.row {
-	@include make-row();
-}
-
-.col {
-	@include make-col();
-}
+@include make-grid();
 
 @include make-hidden();
 
