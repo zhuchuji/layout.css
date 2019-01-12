@@ -11,8 +11,8 @@ $grid-num: 24 !default;
 $xs: 0;
 $sm: 768px !default;
 $md: 992px !default;
-$lg: 1200px !default;
-$xl: 1900px !default;
+$lg: 1264px !default;
+$xl: 1580px !default;
 
 $min-unit: 1px;
 
@@ -26,14 +26,14 @@ $grid-specs: (
 ) !default;
 
 // container padding
-$container-padding: 15px !default;
+$container-padding: 20px !default;
 
 // container max-width spec
 $container-max-width-specs: (
   "sm": 740px,
   "md": 960px,
-  "lg": 1140px,
-  "xl": 1840px
+  "lg": 1200px,
+  "xl": 1500px
 ) !default;
 
 $hidden-specs: (
@@ -50,4 +50,9 @@ $hidden-specs: (
   "xl-only": (min-width: $xl)
 ) !default;
 
-$space-values: 1 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50;
+$space-type: (
+  m: margin,
+  p: padding
+) !default;
+
+$space-values: auto 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50 !default;

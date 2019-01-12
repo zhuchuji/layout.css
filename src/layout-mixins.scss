@@ -55,11 +55,11 @@
   }
 
   .wrap {
-    flex-wrap: "wrap";
+    flex-wrap: wrap;
   }
 
   .no-wrap {
-    flex-wrap: "no-wrap";
+    flex-wrap: nowrap;
   }
 
   .justify-content-start {
@@ -98,7 +98,7 @@
     @include respondTo ($label) {
       // flex grid
       .#{$label} {
-        flex: 1 1 auto;
+        flex: 1 1 0;
         max-width: 100%;
       }
 
@@ -115,11 +115,11 @@
           max-width: $i / ($grid-num) * 100%;
         }
 
-        .#{$label}-offset-#{$i} {
+        .offset-#{$label}-#{$i} {
           margin-left: $i / ($grid-num) * 100%;
         }
 
-        html[lang="ar"] .#{$label}-offset-#{$i} {
+        .offset-ar-#{$label}-#{$i} {
           margin-left: 0;
           margin-right: $i / ($grid-num) * 100%;
         }
@@ -134,7 +134,7 @@
 
     @each $modifier, $media in $hidden-specs {
       @include respondTo($modifier, $hidden-specs) {
-        &--#{$modifier} {
+        &-#{$modifier} {
           display: none;
         }
       }
@@ -143,103 +143,32 @@
 }
 
 @mixin make-margin-padding {
-  .m {
-    &a-auto {
-      margin: auto;
-    }
-    &x-auto {
-      margin-left: auto;
-      margin-right: auto;
-    }
-    &y-auto {
-      margin-top: auto;
-      margin-bottom: auto;
-    }
-    &t-auto {
-      margin-top: auto;
-    }
-    &b-auto {
-      margin-bottom: auto;
-    }
-    &b-auto {
-      margin-bottom: auto;
-    }
-    &r-auto {
-      margin-right: auto;
-    }
-    @each $value in $space-values {
-      &a-#{$value} {
-        margin: #{$value}px;
-      }
-      &x-#{$value} {
-        margin-left: #{$value}px;
-        margin-right: #{$value}px;
-      }
-      &y-#{$value} {
-        margin-top: #{$value}px;
-        margin-bottom: #{$value}px;
-      }
-      &t-#{$value} {
-        margin-top: #{$value}px;
-      }
-      &b-#{$value} {
-        margin-bottom: #{$value}px;
-      }
-      &b-#{$value} {
-        margin-bottom: #{$value}px;
-      }
-      &r-#{$value} {
-        margin-right: #{$value}px;
-      }
-    }
-  }
-  .p {
-    &a-auto {
-      padding: auto;
-    }
-    &x-auto {
-      padding-left: auto;
-      padding-right: auto;
-    }
-    &y-auto {
-      padding-top: auto;
-      padding-bottom: auto;
-    }
-    &t-auto {
-      padding-top: auto;
-    }
-    &b-auto {
-      padding-bottom: auto;
-    }
-    &b-auto {
-      padding-bottom: auto;
-    }
-    &r-auto {
-      padding-right: auto;
-    }
-    @each $value in $space-values {
-      &a-#{$value} {
-        padding: #{$value}px;
-      }
-      &x-#{$value} {
-        padding-left: #{$value}px;
-        padding-right: #{$value}px;
-      }
-      &y-#{$value} {
-        padding-top: #{$value}px;
-        padding-bottom: #{$value}px;
-      }
-      &t-#{$value} {
-        padding-top: #{$value}px;
-      }
-      &b-#{$value} {
-        padding-bottom: #{$value}px;
-      }
-      &b-#{$value} {
-        padding-bottom: #{$value}px;
-      }
-      &r-#{$value} {
-        padding-right: #{$value}px;
+  @each $type, $property in $space-type {
+    .#{$type} {
+      @each $value in $space-values {
+        $label: $value;
+        $spaceValue: $value;
+        @if $value == 'auto' {
+          $spaceValue: #{$value};
+        } @else {
+          $spaceValue: #{$value}px;
+        }
+
+        &t-#{$label}, &y-#{$label}, &a-#{$label} {
+          #{$property}-top: $spaceValue;
+        }
+
+        &b-#{$label}, &y-#{$label}, &a-#{$label} {
+          #{$property}-bottom: $spaceValue;
+        }
+
+        &l-#{$label}, &x-#{$label}, &a-#{$label} {
+          #{$property}-left: $spaceValue;
+        }
+
+        &r-#{$label}, &x-#{$label}, &a-#{$label} {
+          #{$property}-right: $spaceValue;
+        }
       }
     }
   }
