@@ -103,8 +103,8 @@
 								<td>none</td>
 								<td>740px</td>
 								<td>960px</td>
-								<td>1200px</td>
-								<td>1500px</td>
+								<td>1180px</td>
+								<td>1480px</td>
 							</tr>
 						</tbody>
 					</table>
@@ -736,7 +736,7 @@
 				</div>
 
 				<h3>Spacing</h3>
-				<p>We also provide spacing classes for slight adjustment, including margin and padding. We find them helpful though it's easy to implement. These classes will be applied in the format <code>${property}${direction}-${value}</code>.</p>
+				<p>We also provide spacing classes for slight adjustment, including margin and padding. We find them helpful though it's easy to implement. These classes will be applied in the format <code>${property}${direction}-${label}-${value}</code>.</p>
 				<p><code>property</code> types:</p>
 				<ul>
 					<li><code>m</code>: margin</li>
@@ -752,31 +752,39 @@
 					<li><code>l</code>: left</li>
 					<li><code>r</code>: right</li>
 				</ul>
+				<p><code>label</code> types:</p>
+				<ul>
+					<li><code>xs</code></li>
+					<li><code>sm</code></li>
+					<li><code>md</code></li>
+					<li><code>lg</code></li>
+					<li><code>xl</code></li>
+				</ul>
 				<p><code>values</code>: auto, 2, 3, 4, 5, 6, 8, 10, 12, 14, 15, 16, 18, 20, 25, 30, 40, 50.</p>
 				<div class="demo">
 					<div class="demo__view">
 							<div class="flex basic-row">
-								<div class="xs-8 mx-auto">
-									<div class="block--blue">xs-8 mx-auto</div>
+								<div class="xs-8 mx-xs-auto">
+									<div class="block--blue">xs-8 mx-xs-auto</div>
 								</div>
-								<div class="xs-8 mx-auto">
-									<div class="block--green">xs-8 mx-auto</div>
+								<div class="xs-8 mx-xs-auto">
+									<div class="block--green">xs-8 mx-xs-auto</div>
 								</div>
 							</div>
 						<div class="flex basic-row">
-							<div class="xs-8 ma-10">
-								<div class="block--blue">xs-8 ma-20</div>
+							<div class="xs-8 ma-xs-20">
+								<div class="block--blue">xs-8 ma-xs-20</div>
 							</div>
-							<div class="xs-8 ma-10">
-								<div class="block--blue">xs-8 ma-20</div>
+							<div class="xs-8 ma-xs-20">
+								<div class="block--blue">xs-8 ma-xs-20</div>
 							</div>
 						</div>
 						<div class="flex basic-row">
-							<div class="xs-8 px-20">
-								<div class="block--blue">xs-8 px-20</div>
+							<div class="xs-8 px-xs-20">
+								<div class="block--blue">xs-8 px-xs-20</div>
 							</div>
-							<div class="xs-8 px-20">
-								<div class="block--blue">xs-8 px-20</div>
+							<div class="xs-8 px-xs-20">
+								<div class="block--blue">xs-8 px-xs-20</div>
 							</div>
 						</div>
 					</div>
@@ -785,8 +793,8 @@
 							<pre class="demo__code"><code></code></pre>
 						</div>
 						<div class="xs-24 sm-12 desc">
-							<p><code>ma-10</code> will apply <code>margin: 10px</code> for the content while <code>px-10</code> will apply <code>padding-left: 10px</code> and <code>padding-right: 10px</code>.</p>
-							<p>As demonstrated in <a href="https://github.com/philipwalton/flexbugs#flexbug-15">flexbugs #15</a>, there are bugs for <code>my-auto</code> and <code>ma-auto</code> in cross axis in IE. If you need align-center, use <code>align-items-center</code> instead of <code>my-auto</code>.</p>
+							<p><code>ma-xs-10</code> will apply <code>margin: 10px</code> for the content on small devices and up while <code>px-10</code> will apply <code>padding-left: 10px</code> and <code>padding-right: 10px</code>.</p>
+							<p>As demonstrated in <a href="https://github.com/philipwalton/flexbugs#flexbug-15">flexbugs #15</a>, there are bugs for <code>my-xs-auto</code> and <code>ma-xs-auto</code> in cross axis in IE. If you need align-center, use <code>align-items-center</code> instead of <code>my-auto</code>.</p>
 						</div>
 					</div>
 				</div>
@@ -808,8 +816,16 @@
 					<li>hidden-xl-only</li>
 				</ul>
 
+				<h3>Overflow</h3>
+				<p>Classes for <code>overflow</code></p>
+				<ul>
+					<li><code>overflow-hidden</code>: <code>overflow: hidden</code></li>
+					<li><code>overflow-x-hidden</code>: <code>overflow-x: hidden</code></li>
+					<li><code>overflow-y-hidden</code>: <code>overflow-y: hidden</code></li>
+				</ul>
+
 				<h3>Symmetric Layout For Arabic Websites</h3>
-				<p>For Arabic websites, flexbox will reverse the layout and content symetrically. We also reset asymmetric layout class e.g. <code>xs-offset-*</code> such that the layout do not break. Make sure you have added <code>lang="ar"</code> to <code>html</code>.</p>
+				<p>For Arabic websites, flexbox will reverse the layout and content symetrically. We also provide symmetric layout class e.g. <code>offset-ar-*-*</code> such that the layout does not break down. But avoid to apply <code>ml-*-*</code> and <code>mr-*-*</code> if your website serve content for Arabic countries.</p>
 
 				<h3>Browser Compatibility</h3>
 				<p>Chrome, Firefox, Safari, IE10+, Edge</p>

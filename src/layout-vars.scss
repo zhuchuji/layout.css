@@ -32,8 +32,8 @@ $container-padding: 20px !default;
 $container-max-width-specs: (
   "sm": 740px,
   "md": 960px,
-  "lg": 1200px,
-  "xl": 1500px
+  "lg": 1180px,
+  "xl": 1480px
 ) !default;
 
 $hidden-specs: (
@@ -55,4 +55,4 @@ $space-type: (
   p: padding
 ) !default;
 
-$space-values: auto 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50 !default;
+$space-values: auto 0 2 3 4 5 6 8 10 12 14 15 16 18 20 25 30 40 50 !default;

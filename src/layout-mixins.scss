@@ -94,6 +94,18 @@
     align-items: flex-end;
   }
 
+  .align-self-start {
+    align-self: flex-start;
+  }
+
+  .align-self-center {
+    align-self: center;
+  }
+
+  .align-self-end {
+    align-self: flex-end;
+  }
+
   @each $label, $media in $grid-specs {
     @include respondTo ($label) {
       // flex grid
@@ -118,7 +130,10 @@
         .offset-#{$label}-#{$i} {
           margin-left: $i / ($grid-num) * 100%;
         }
+      }
 
+      // reset offset for Arabic symmetric website
+      @for $i from 1 through $grid-num {
         .offset-ar-#{$label}-#{$i} {
           margin-left: 0;
           margin-right: $i / ($grid-num) * 100%;
@@ -142,32 +157,48 @@
   }
 }
 
+@mixin make-overflow () {
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+
+  .overflow-y-hidden {
+    overflow-y: hidden;
+  }
+}
+
 @mixin make-margin-padding {
   @each $type, $property in $space-type {
-    .#{$type} {
-      @each $value in $space-values {
-        $label: $value;
-        $spaceValue: $value;
-        @if $value == 'auto' {
-          $spaceValue: #{$value};
-        } @else {
-          $spaceValue: #{$value}px;
-        }
+    @each $label, $breakpoint in $grid-specs {
+      @include respondTo($label) {
+        @each $value in $space-values {
+          $name: $value;
+          $spaceValue: $value;
+          @if $value == 'auto' {
+            $spaceValue: #{$value};
+          } @else {
+            $spaceValue: #{$value}px;
+          }
 
-        &t-#{$label}, &y-#{$label}, &a-#{$label} {
-          #{$property}-top: $spaceValue;
-        }
+          .#{$type}t-#{$label}-#{$name}, .#{$type}y-#{$label}-#{$name}, .#{$type}a-#{$label}-#{$name} {
+            #{$property}-top: $spaceValue;
+          }
 
-        &b-#{$label}, &y-#{$label}, &a-#{$label} {
-          #{$property}-bottom: $spaceValue;
-        }
+          .#{$type}b-#{$label}-#{$name}, .#{$type}y-#{$label}-#{$name}, .#{$type}a-#{$label}-#{$name} {
+            #{$property}-bottom: $spaceValue;
+          }
 
-        &l-#{$label}, &x-#{$label}, &a-#{$label} {
-          #{$property}-left: $spaceValue;
-        }
+          .#{$type}l-#{$label}-#{$name}, .#{$type}x-#{$label}-#{$name}, .#{$type}a-#{$label}-#{$name} {
+            #{$property}-left: $spaceValue;
+          }
 
-        &r-#{$label}, &x-#{$label}, &a-#{$label} {
-          #{$property}-right: $spaceValue;
+          .#{$type}r-#{$label}-#{$name}, .#{$type}x-#{$label}-#{$name}, .#{$type}a-#{$label}-#{$name} {
+            #{$property}-right: $spaceValue;
+          }
         }
       }
     }
