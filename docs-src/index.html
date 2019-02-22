@@ -253,18 +253,17 @@
 				</div>
 
 				<h3>Gutter</h3>
-				<p>We don't provide gutters between item, since it might be any value in real websites. For present, we could implement similar effect with flex <code>justfiy-content: space-between</code>, but it's not a fixed-width gutter. We will implement this function with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid Layout</a> in future. If you do need gutters between item, you could set <code>margin</code> or <code>padding</code> in item.</p>
+				<p>Gutter could be implemented with spacing util class, but we must compensate for the padding of first and last flex items.</p>
 				<div class="demo">
 					<div class="demo__view">
-						<div class="flex basic-row">
-							<div class="xs block--gutter block--first">
-								<div class="block--blue">xs gutter: 10%</div>
-							</div>
-							<div class="xs block--gutter">
-								<div class="block--green">xs gutter: 10%</div>
-							</div>
-							<div class="xs block--gutter block--last">
-								<div class="block--blue">xs gutter: 10%</div>
+						<div class="overflow-x-hidden">
+							<div class="flex basic-row mx-lg-n20">
+								<div class="lg px-lg-20">
+									<div class="block--blue">lg gutter</div>
+								</div>
+								<div class="lg px-lg-20">
+									<div class="block--blue">lg gutter</div>
+								</div>
 							</div>
 						</div>
 					</div>

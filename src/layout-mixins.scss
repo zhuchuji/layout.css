@@ -172,9 +172,9 @@
 }
 
 @mixin make-margin-padding {
-  @each $type, $property in $space-type {
-    @each $label, $breakpoint in $grid-specs {
-      @include respondTo($label) {
+  @each $label, $breakpoint in $grid-specs {
+    @include respondTo($label) {
+      @each $type, $property in $space-type {
         @each $value in $space-values {
           $name: $value;
           $spaceValue: $value;
@@ -198,6 +198,13 @@
 
           .#{$type}r-#{$label}-#{$name}, .#{$type}x-#{$label}-#{$name}, .#{$type}a-#{$label}-#{$name} {
             #{$property}-right: $spaceValue;
+          }
+
+          @if $type == 'm' and $value != 'auto' and $value != 0 {
+            .#{$type}x-#{$label}-n#{$name} {
+              #{$property}-left: -#{$spaceValue};
+              #{$property}-right: -#{$spaceValue};
+            }
           }
         }
       }
