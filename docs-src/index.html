@@ -29,6 +29,9 @@
 							<li class="xs-24 sm-fit menu-item">
 								<a class="menu-item__link header__text">Language: English</a>
 							</li>
+							<li class="xs-24 sm-fit menu-item">
+								<a class="menu-item__link header__text" href="https://github.com/zhuchuji/layout.css">Github</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -253,7 +256,7 @@
 				</div>
 
 				<h3>Gutter</h3>
-				<p>Gutter could be implemented with spacing util class, but we must compensate for the padding of first and last flex items.</p>
+				<p>Gutter could be implemented with spacing util class, but we must add negative margin to compensate for the padding of first and last flex items.</p>
 				<div class="demo">
 					<div class="demo__view">
 						<div class="overflow-x-hidden">
@@ -269,28 +272,16 @@
 					</div>
 					<div class="flex">
 						<div class="xs-24 sm-12">
-							<pre class="demo__code"><code>&lt;div class="row basic-row"&gt;
-  &lt;div class="col block--gutter block--first"&gt;
-    &lt;div class="block--blue"&gt;col gutter: 10%&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="col block--gutter"&gt;
-    &lt;div class="block--green"&gt;col gutter: 10%&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="col block--gutter block--last"&gt;
-    &lt;div class="block--blue"&gt;col gutter: 10%&lt;/div&gt;
-  &lt;/div&gt;
+							<pre class="demo__code"><code>&lt;div class="overflow-x-hidden"&gt;
+	&lt;div class="flex basic-row mx-lg-n20"&gt;
+		&lt;div class="lg px-lg-20"&gt;
+			&lt;div class="block--blue"&gt;lg gutter&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="lg px-lg-20"&gt;
+			&lt;div class="block--blue"&gt;lg gutter&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;
-&lt;style&gt;
-  .block--gutter {
-    margin: 0 5%;
-  }
-  .block--first {
-    margin-left: 0;
-  }
-  .block--last {
-    margin-right: 0;
-  }
-&lt;/style&gt;
 							</code></pre>
 						</div>
 						<div class="xs-24 sm-12 desc">
@@ -577,6 +568,9 @@
 					<li><code>align-items-start</code>: align items at flex start in cross axis</li>
 					<li><code>align-items-center</code>: align items at the ceter in cross axis</li>
 					<li><code>align-items-end</code>: align items at the end in cross axis</li>
+					<li><code>align-self-start</code>: align itself at the start in the cross axis</li>
+					<li><code>align-self-center</code>: align itself at the center in the cross axis</li>
+					<li><code>align-self-end</code>: align itself at the end in the cross axis</li>
 				</ul>
 				<div class="demo">
 					<div class="demo__view">
