@@ -259,33 +259,29 @@
 				<p>Gutter could be implemented with spacing util class, but we must add negative margin to compensate for the padding of first and last flex items.</p>
 				<div class="demo">
 					<div class="demo__view">
-						<div class="overflow-x-hidden">
-							<div class="flex basic-row mx-lg-n20">
-								<div class="lg px-lg-20">
-									<div class="block--blue">lg gutter</div>
-								</div>
-								<div class="lg px-lg-20">
-									<div class="block--blue">lg gutter</div>
-								</div>
+						<div class="flex basic-row mx-lg-n20">
+							<div class="lg px-lg-20">
+								<div class="block--blue">lg gutter</div>
+							</div>
+							<div class="lg px-lg-20">
+								<div class="block--blue">lg gutter</div>
 							</div>
 						</div>
 					</div>
 					<div class="flex">
 						<div class="xs-24 sm-12">
-							<pre class="demo__code"><code>&lt;div class="overflow-x-hidden"&gt;
-	&lt;div class="flex basic-row mx-lg-n20"&gt;
-		&lt;div class="lg px-lg-20"&gt;
-			&lt;div class="block--blue"&gt;lg gutter&lt;/div&gt;
-		&lt;/div&gt;
-		&lt;div class="lg px-lg-20"&gt;
-			&lt;div class="block--blue"&gt;lg gutter&lt;/div&gt;
-		&lt;/div&gt;
+							<pre class="demo__code"><code>&lt;div class="flex basic-row mx-lg-n20"&gt;
+	&lt;div class="lg px-lg-20"&gt;
+		&lt;div class="block--blue"&gt;lg gutter&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="lg px-lg-20"&gt;
+		&lt;div class="block--blue"&gt;lg gutter&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/div&gt;
 							</code></pre>
 						</div>
 						<div class="xs-24 sm-12 desc">
-							<p>To add gutter between columns, you should add customed classes with <code>margin</code> or <code>padding</code> on column rather than modifying directly on predefined classes <code>col-*</code>. Otherwise, it will affect all columns on your website and which is completely not what you want.</p>
+							<p>If gutter causes overflow and the scrollbar shows up in some browsers, add a wrapper <code>&lt;div class="overflow-x-hidden"&gt;&lt;div&gt;</code> to fix it.</p>
 						</div>
 					</div>
 				</div>
@@ -753,7 +749,7 @@
 					<li><code>lg</code></li>
 					<li><code>xl</code></li>
 				</ul>
-				<p><code>values</code>: auto, 2, 3, 4, 5, 6, 8, 10, 12, 14, 15, 16, 18, 20, 25, 30, 40, 50.</p>
+				<p><code>values</code>: auto 0 2 5 10 15 20 25 30 40 50.</p>
 				<div class="demo">
 					<div class="demo__view">
 							<div class="flex basic-row">
@@ -788,6 +784,7 @@
 						<div class="xs-24 sm-12 desc">
 							<p><code>ma-xs-10</code> will apply <code>margin: 10px</code> for the content on small devices and up while <code>px-10</code> will apply <code>padding-left: 10px</code> and <code>padding-right: 10px</code>.</p>
 							<p>As demonstrated in <a href="https://github.com/philipwalton/flexbugs#flexbug-15">flexbugs #15</a>, there are bugs for <code>my-xs-auto</code> and <code>ma-xs-auto</code> in cross axis in IE. If you need align-center, use <code>align-items-center</code> instead of <code>my-auto</code>.</p>
+							<p>In reality, try to avoid applying <code>margin-top</code>, because it will lead to unpredictable layout. Instead, apply <code>margin-bottom</code>.</p>
 						</div>
 					</div>
 				</div>
